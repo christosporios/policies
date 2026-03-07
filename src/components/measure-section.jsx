@@ -7,6 +7,7 @@ import { CaseStudy } from './case-study';
 import { BudgetTable } from './budget-table';
 import { AllocationGrid } from './allocation-grid';
 import { ParamGrid } from './param-grid';
+import { AccordionBody } from './accordion-body';
 
 export const MeasureSection = ({ measure, index, isOpen, onToggle, ctx, sectionId }) => {
   const mobile = ctx.mobile;
@@ -39,8 +40,7 @@ export const MeasureSection = ({ measure, index, isOpen, onToggle, ctx, sectionI
         </div>
       </button>
 
-      <div style={{ display: 'grid', gridTemplateRows: isOpen ? '1fr' : '0fr', opacity: isOpen ? 1 : 0, transition: 'grid-template-rows 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease' }}>
-        <div style={{ overflow: 'hidden' }}>
+      <AccordionBody isOpen={isOpen}>
         <div style={{ maxWidth: 860, margin: '0 auto', padding: mobile ? '0 20px 40px' : '0 40px 40px' }}>
 
           <Subheading>Context</Subheading>
@@ -49,6 +49,19 @@ export const MeasureSection = ({ measure, index, isOpen, onToggle, ctx, sectionI
 
           <Subheading>Action</Subheading>
           <div style={{ marginBottom: 4 }}>{resolveBody(measure.action?.body, sectionCtx)}</div>
+          {measure.action?.tranches && (
+            <div style={{ display: 'grid', gridTemplateColumns: mobile ? '1fr' : `repeat(${measure.action.tranches.length}, 1fr)`, gap: 1, background: C.rule, border: `1px solid ${C.rule}`, margin: '20px 0' }}>
+              {measure.action.tranches.map((t, i) => (
+                <div key={i} style={{ background: C.card, padding: '18px 16px' }}>
+                  <div style={{ fontFamily: C.mono, fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.faint, marginBottom: 6 }}>Tranche {t.tranche} · Months {t.months}</div>
+                  <div style={{ fontFamily: C.mono, fontSize: 20, fontWeight: 500, color: C.ink, marginBottom: 4 }}>{t.spaces}</div>
+                  <div style={{ fontSize: 12, color: C.light, lineHeight: 1.4, marginBottom: 6 }}>spaces</div>
+                  <div style={{ fontSize: 12, color: C.mid, lineHeight: 1.5 }}>{t.area}</div>
+                  {t.mix && <div style={{ fontFamily: C.mono, fontSize: 10, color: C.faint, marginTop: 8, letterSpacing: '0.03em' }}>{t.mix}</div>}
+                </div>
+              ))}
+            </div>
+          )}
           {measure.action?.allocations && <AllocationGrid allocations={measure.action.allocations} mobile={ctx.mobile} />}
           {measure.action?.params && <ParamGrid params={measure.action.params} mobile={ctx.mobile} />}
           {measure.action?.notes?.map((n, i) => <Note key={i}>{resolveTokens(n.replace(/\n/g, ' '), sectionCtx)}</Note>)}
@@ -62,8 +75,7 @@ export const MeasureSection = ({ measure, index, isOpen, onToggle, ctx, sectionI
           <Subheading>Budget</Subheading>
           <BudgetTable items={measure.budget.items} notes={measure.budget.notes} ctx={sectionCtx} />
         </div>
-        </div>
-      </div>
+      </AccordionBody>
     </div>
   );
 };

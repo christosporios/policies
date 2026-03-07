@@ -1,4 +1,5 @@
 import { useState, useMemo, useRef, useCallback, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import yaml from 'js-yaml';
 import policyYaml from '../policies/mobility.policy.yaml?raw';
 import { useIsMobile } from './hooks/use-is-mobile';
@@ -22,14 +23,18 @@ function sectionIds(policy) {
 }
 
 export default function App() {
-  const policy = useMemo(() => yaml.load(policyYaml), []);
-  const allIds = useMemo(() => sectionIds(policy), [policy]);
+  const [policy, yamlError] = useMemo(() => {
+    try { return [yaml.load(policyYaml), null]; }
+    catch (e) { return [null, e]; }
+  }, []);
+  const allIds = useMemo(() => policy ? sectionIds(policy) : [], [policy]);
 
   const mobile = useIsMobile();
   const px = mobile ? 20 : 40;
 
   // Read initial open sections from URL hash
   const [openSections, setOpenSections] = useState(() => {
+    if (!policy) return new Set();
     const hash = window.location.hash.slice(1);
     if (hash && allIds.includes(hash)) return new Set([hash]);
     return new Set([policy.measures[0].id]);
@@ -108,6 +113,23 @@ export default function App() {
     setOpenSections(prev => prev.size === allIds.length ? new Set() : new Set(allIds));
   }, [allIds]);
 
+  if (yamlError) {
+    return (
+      <div style={{ fontFamily: C.sans, background: C.bg, color: C.ink, minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 40 }}>
+        <div style={{ maxWidth: 560 }}>
+          <div style={{ fontFamily: C.mono, fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.faint, marginBottom: 16 }}>Policy file error</div>
+          <h1 style={{ fontFamily: C.serif, fontSize: 22, fontWeight: 600, color: C.ink, marginBottom: 12 }}>{yamlError.reason || 'Invalid YAML'}</h1>
+          {yamlError.mark && (
+            <div style={{ fontFamily: C.mono, fontSize: 12, color: C.mid, background: C.card, border: `1px solid ${C.rule}`, padding: '16px 20px', borderRadius: 4, lineHeight: 1.6, whiteSpace: 'pre-wrap', overflowX: 'auto' }}>
+              Line {yamlError.mark.line + 1}, column {yamlError.mark.column + 1}
+              {yamlError.mark.snippet && <>{'\n\n'}{yamlError.mark.snippet}</>}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   const allStats = policy.measures.flatMap(m => m.context?.stats || []);
   const metaCtx = { stats: allStats, legal: [], refs: policy.references, refIndex, onRefClick, mobile };
   const ctx = { refs: policy.references, refIndex, onRefClick, mobile };
@@ -132,8 +154,11 @@ export default function App() {
 
       {/* HEADER */}
       <header ref={headerRef} style={{ background: C.ink, color: '#f7f6f4', padding: mobile ? '40px 0 36px' : '64px 0 56px', position: 'relative', overflow: 'hidden' }}>
+        {policy.meta.background_image && (
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${policy.meta.background_image})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08, pointerEvents: 'none' }} />
+        )}
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px)', pointerEvents: 'none' }} />
-        <div style={{ maxWidth: 860, margin: '0 auto', padding: `0 ${px}px`, position: 'relative' }}>
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: 'easeOut' }} style={{ maxWidth: 860, margin: '0 auto', padding: `0 ${px}px`, position: 'relative' }}>
           <div style={{ fontFamily: C.mono, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(247,246,244,0.45)', marginBottom: 16 }}>
             Municipality of Athens &nbsp;·&nbsp; Mobility Reform
           </div>
@@ -157,7 +182,7 @@ export default function App() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </header>
 
       {/* MEASURE STRIP */}
@@ -219,7 +244,7 @@ export default function App() {
         {policy.kpis && (
           <>
             <div style={{ maxWidth: 860, margin: '0 auto', fontFamily: C.mono, fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.label, padding: mobile ? '40px 20px 4px' : '40px 40px 4px' }}>Performance</div>
-            <KpiSection kpis={policy.kpis} isOpen={openSections.has('kpis')} onToggle={() => toggle('kpis')} mobile={mobile} />
+            <KpiSection kpis={policy.kpis} isOpen={openSections.has('kpis')} onToggle={() => toggle('kpis')} mobile={mobile} ctx={ctx} />
           </>
         )}
 

@@ -1,5 +1,7 @@
 import { C } from '../lib/theme';
+import { resolveTokens } from '../lib/tokens';
 import { Icon } from './icon';
+import { AccordionBody } from './accordion-body';
 
 const typeColors = {
   operational: { bg: 'rgba(26,26,26,0.06)', text: C.mid },
@@ -25,7 +27,7 @@ const FreqBadge = ({ frequency }) => (
   }}>{frequency}</span>
 );
 
-const IndicatorRow = ({ ind, mobile }) => (
+const IndicatorRow = ({ ind, mobile, ctx }) => (
   <div style={{ padding: mobile ? '16px 0' : '14px 0', borderBottom: `1px solid ${C.rule}` }}>
     <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 8, flexWrap: 'wrap' }}>
       <span style={{ fontSize: 13.5, fontWeight: 500, color: C.ink, flex: 1, minWidth: 0 }}>{ind.label}</span>
@@ -51,7 +53,7 @@ const IndicatorRow = ({ ind, mobile }) => (
           borderRadius: mobile ? 4 : 0,
         }}>
           <div style={{ fontFamily: C.mono, fontSize: 8, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.faint, marginBottom: 3 }}>{label}</div>
-          <div style={{ fontSize: 12.5, color: C.mid, lineHeight: 1.5 }}>{value}</div>
+          <div style={{ fontSize: 12.5, color: C.mid, lineHeight: 1.5 }}>{ctx ? resolveTokens(String(value), ctx) : value}</div>
         </div>
       ))}
     </div>
@@ -62,21 +64,21 @@ const IndicatorRow = ({ ind, mobile }) => (
   </div>
 );
 
-const MeasureKpiBlock = ({ block, mobile }) => (
+const MeasureKpiBlock = ({ block, mobile, ctx }) => (
   <div style={{ marginBottom: 32 }}>
     <div style={{
       fontFamily: C.mono, fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase',
       color: C.faint, marginBottom: 10, paddingBottom: 6, borderBottom: `1px solid ${C.rule}`,
     }}>
-      {block.title}
+      {block.title || block.label}
     </div>
     {block.indicators.map(ind => (
-      <IndicatorRow key={ind.id} ind={ind} mobile={mobile} />
+      <IndicatorRow key={ind.id} ind={ind} mobile={mobile} ctx={ctx} />
     ))}
   </div>
 );
 
-export const KpiSection = ({ kpis, isOpen, onToggle, mobile }) => (
+export const KpiSection = ({ kpis, isOpen, onToggle, mobile, ctx }) => (
   <div data-section="kpis" style={{ background: isOpen ? C.hover : 'transparent', transition: 'background 0.2s' }}>
     <div style={{ borderTop: `1px solid ${C.rule}` }} />
     <button onClick={onToggle} aria-expanded={isOpen} style={{ cursor: 'pointer', userSelect: 'none', background: 'none', border: 'none', width: '100%', textAlign: 'left', padding: 0, font: 'inherit', color: 'inherit' }}>
@@ -96,13 +98,18 @@ export const KpiSection = ({ kpis, isOpen, onToggle, mobile }) => (
       </div>
     </button>
 
-    <div style={{ display: 'grid', gridTemplateRows: isOpen ? '1fr' : '0fr', opacity: isOpen ? 1 : 0, transition: 'grid-template-rows 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease' }}>
-      <div style={{ overflow: 'hidden' }}>
+    <AccordionBody isOpen={isOpen}>
         <div style={{ maxWidth: 860, margin: '0 auto', padding: mobile ? '0 20px 40px' : '0 40px 40px' }}>
+
+          {kpis.note && (
+            <p style={{ fontSize: 13, color: C.light, fontStyle: 'italic', marginTop: 0, marginBottom: 24, lineHeight: 1.65 }}>
+              {kpis.note.trim()}
+            </p>
+          )}
 
           {/* Per-measure KPIs */}
           {kpis.measures.map(block => (
-            <MeasureKpiBlock key={block.measure_id} block={block} mobile={mobile} />
+            <MeasureKpiBlock key={block.measure_id} block={block} mobile={mobile} ctx={ctx} />
           ))}
 
           {/* Programme-wide KPIs */}
@@ -110,10 +117,10 @@ export const KpiSection = ({ kpis, isOpen, onToggle, mobile }) => (
             <MeasureKpiBlock
               block={{ title: 'Programme-Wide', indicators: kpis.programme_wide.indicators }}
               mobile={mobile}
+              ctx={ctx}
             />
           )}
         </div>
-      </div>
-    </div>
+    </AccordionBody>
   </div>
 );

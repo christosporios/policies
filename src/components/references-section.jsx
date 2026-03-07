@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { C } from '../lib/theme';
 import { Icon } from './icon';
+import { AccordionBody } from './accordion-body';
 
 export const ReferencesSection = ({ refs, refIndex, isOpen, onToggle, mobile, highlightRef }) => {
   const usedMap = refIndex.getMap();
@@ -33,8 +34,7 @@ export const ReferencesSection = ({ refs, refIndex, isOpen, onToggle, mobile, hi
         </div>
       </button>
 
-      <div style={{ display: 'grid', gridTemplateRows: isOpen ? '1fr' : '0fr', opacity: isOpen ? 1 : 0, transition: 'grid-template-rows 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease' }}>
-        <div style={{ overflow: 'hidden' }}>
+      <AccordionBody isOpen={isOpen}>
         <div style={{ maxWidth: 860, margin: '0 auto', padding: mobile ? '0 20px 40px' : '0 40px 40px' }}>
           {usedRefs.map(r => {
             const refNum = usedMap[r.id];
@@ -58,8 +58,7 @@ export const ReferencesSection = ({ refs, refIndex, isOpen, onToggle, mobile, hi
             );
           })}
         </div>
-        </div>
-      </div>
+      </AccordionBody>
     </div>
   );
 };

@@ -52,11 +52,24 @@ export function resolveTokens(text, { stats = [], legal = [], refs = [], refInde
   });
 }
 
+// Wraps **bold** text in <strong> after token resolution
+function applyBold(nodes) {
+  return nodes.flatMap((node, i) => {
+    if (typeof node !== 'string') return [node];
+    const parts = node.split(/(\*\*[^*]+\*\*)/g);
+    return parts.map((part, j) => {
+      const bold = part.match(/^\*\*(.+)\*\*$/);
+      if (bold) return <strong key={`b-${i}-${j}`} style={{ fontWeight: 600, color: C.ink }}>{bold[1]}</strong>;
+      return part;
+    });
+  });
+}
+
 export function resolveBody(body, ctx) {
   if (!body) return null;
   return body.trim().split(/\n\n+/).map((para, i) => (
     <p key={i} style={{ marginBottom: 16, fontSize: 14.5, color: C.mid, lineHeight: 1.8 }}>
-      {resolveTokens(para.replace(/\n/g, ' '), ctx)}
+      {applyBold(resolveTokens(para.replace(/\n/g, ' '), ctx))}
     </p>
   ));
 }
