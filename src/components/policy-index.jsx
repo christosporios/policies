@@ -66,7 +66,7 @@ const PolicyCard = ({ entry, index, onSelect }) => {
           style={{
             position: 'absolute', inset: 0,
             backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center',
-            opacity: hovered ? 0.12 : 0.08,
+            opacity: hovered ? 0.25 : 0.18,
             transform: hovered ? 'scale(1.05)' : 'scale(1)',
             transition: 'opacity 0.8s, transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)',
           }}

@@ -70,26 +70,30 @@ for (let i = 0; i < allPolicies.length; i++) {
   }
 }
 
-// Build text overlay — list each policy title
+// Build text overlay — vertically centered layout
+const blockHeight = allPolicies.length * 100 + 40; // titles + label
+const startY = Math.floor((H - blockHeight) / 2) + 30;
+
 const titleLines = allPolicies.map((p, i) => {
-  const y = 260 + i * 90;
+  const y = startY + 60 + i * 100;
   return `
-    <text x="80" y="${y}" font-family="serif" font-size="56" font-weight="700" fill="#f7f6f4" letter-spacing="-1">
+    <text x="100" y="${y}" font-family="serif" font-size="52" font-weight="700" fill="#f7f6f4" letter-spacing="-1">
       ${p.meta.title}
     </text>
-    <text x="80" y="${y + 44}" font-family="serif" font-size="30" font-weight="400" font-style="italic" fill="rgba(247,246,244,0.55)">
+    <text x="100" y="${y + 38}" font-family="serif" font-size="24" font-weight="400" font-style="italic" fill="rgba(247,246,244,0.5)">
       ${p.meta.subtitle}
     </text>`;
 }).join('');
 
 const homeSvg = `
 <svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="rgba(0,0,0,0.45)"/>
-  <text x="80" y="160" font-family="monospace" font-size="20" letter-spacing="5" fill="rgba(247,246,244,0.4)">
+  <rect width="100%" height="100%" fill="rgba(0,0,0,0.5)"/>
+  <text x="100" y="${startY}" font-family="monospace" font-size="13" letter-spacing="6" fill="rgba(247,246,244,0.35)">
     POLICY PROPOSALS
   </text>
-  <rect x="80" y="180" width="100" height="2" fill="rgba(247,246,244,0.15)"/>
+  <rect x="100" y="${startY + 14}" width="60" height="1" fill="rgba(247,246,244,0.15)"/>
   ${titleLines}
+  <rect x="100" y="${H - 60}" width="80" height="1" fill="rgba(247,246,244,0.12)"/>
 </svg>`;
 
 composites.push({ input: Buffer.from(homeSvg), top: 0, left: 0 });

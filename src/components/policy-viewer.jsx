@@ -159,7 +159,7 @@ export const PolicyViewer = ({ policyEntry, onBack }) => {
             transition={{
               layout: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
             }}
-            style={{ position: 'absolute', inset: 0, backgroundImage: `url(${policy.meta.background_image})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08, pointerEvents: 'none' }}
+            style={{ position: 'absolute', inset: 0, backgroundImage: `url(${policy.meta.background_image})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.18, pointerEvents: 'none' }}
           />
         )}
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px)', pointerEvents: 'none' }} />
