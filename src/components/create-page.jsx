@@ -70,26 +70,26 @@ export const CreatePage = ({ onBack }) => {
           Each policy on this site is a single YAML file. You write the policy, drop the file in, and the site renders it — budgets, timelines, KPIs, references, and all.
         </p>
 
-        <Step number={1} title="Research with Claude">
+        <Step number={1} title="Set up a Claude project">
+          <p style={{ marginBottom: 12 }}>
+            A skill file teaches Claude the exact YAML schema and writing conventions for policy documents.
+            Download it and create a project on Claude:
+          </p>
+          <ol style={{ paddingLeft: 20, marginBottom: 16, lineHeight: 2 }}>
+            <li>Download the skill file below.</li>
+            <li>On <a href="https://claude.ai" target="_blank" rel="noopener" style={{ color: C.ink, textDecoration: 'underline' }}>claude.ai</a>, click <strong>Projects</strong> in the left sidebar, then <strong>Create project</strong>.</li>
+            <li>In your new project, find the <strong>Project knowledge</strong> panel on the right and click the <strong>+</strong> button.</li>
+            <li>Upload the skill file. Claude will now use it across all chats in that project.</li>
+          </ol>
+          <DownloadButton href="/policy-skill.md">Download skill file</DownloadButton>
+        </Step>
+
+        <Step number={2} title="Research">
           <p>
-            Open <a href="https://claude.ai" target="_blank" rel="noopener" style={{ color: C.ink, textDecoration: 'underline' }}>claude.ai</a> and
-            start a conversation with <strong>Deep Research</strong> enabled. Describe the problem you want to solve, the jurisdiction,
+            Start a new chat in your project with <strong>Deep Research</strong> enabled. Describe the problem you want to solve, the jurisdiction,
             and any constraints. Claude will research the legal framework, find cost benchmarks, identify case studies, and gather
             the statistics you need.
           </p>
-        </Step>
-
-        <Step number={2} title="Add the skill file">
-          <p style={{ marginBottom: 12 }}>
-            A skill file teaches Claude the exact YAML schema and writing conventions for policy documents.
-            Download it, then add it to a Claude project:
-          </p>
-          <ol style={{ paddingLeft: 20, marginBottom: 16, lineHeight: 2 }}>
-            <li>On <a href="https://claude.ai" target="_blank" rel="noopener" style={{ color: C.ink, textDecoration: 'underline' }}>claude.ai</a>, click <strong>Projects</strong> in the left sidebar, then <strong>Create project</strong>.</li>
-            <li>In your new project, find the <strong>Project knowledge</strong> panel on the right and click the <strong>+</strong> button.</li>
-            <li>Upload the skill file you downloaded below. Claude will now use it across all chats in that project.</li>
-          </ol>
-          <DownloadButton href="/policy-skill.md">Download skill file</DownloadButton>
         </Step>
 
         <Step number={3} title="Generate the policy">
