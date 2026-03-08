@@ -12,6 +12,7 @@ function slugFromPath() {
 
 export default function App() {
   const [activeSlug, setActiveSlug] = useState(slugFromPath);
+  const [previewEntry, setPreviewEntry] = useState(null);
 
   useEffect(() => {
     const onPop = () => setActiveSlug(slugFromPath());
@@ -29,7 +30,7 @@ export default function App() {
     setActiveSlug(slug);
   }, []);
 
-  const activePolicy = activeSlug && activeSlug !== 'create' ? getPolicy(activeSlug) : null;
+  const activePolicy = activeSlug && activeSlug !== 'create' && activeSlug !== 'preview' ? getPolicy(activeSlug) : null;
   const validPolicies = policies.filter(p => p.data);
 
   if (!activeSlug && validPolicies.length === 1) {
@@ -37,6 +38,33 @@ export default function App() {
   }
 
   const isCreate = activeSlug === 'create';
+
+  if (activeSlug === 'preview' && previewEntry) {
+    return (
+      <AnimatePresence mode="wait">
+        <motion.div
+          key="preview"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+        >
+          <div style={{
+            background: '#1a1917', color: 'rgba(247,246,244,0.6)',
+            padding: '10px 20px',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+            fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.05em',
+            borderBottom: '1px solid rgba(247,246,244,0.1)',
+            position: 'sticky', top: 0, zIndex: 100,
+          }}>
+            <span style={{ fontSize: 14 }}>&#9888;</span>
+            This is a local preview — this URL can't be shared
+          </div>
+          <PolicyViewer policyEntry={previewEntry} onBack={() => navigate('create')} />
+        </motion.div>
+      </AnimatePresence>
+    );
+  }
 
   if (isCreate) {
     return (
@@ -48,7 +76,13 @@ export default function App() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
         >
-          <CreatePage onBack={() => navigate(null)} />
+          <CreatePage
+            onBack={() => navigate(null)}
+            onPreview={(entry) => {
+              setPreviewEntry(entry);
+              navigate('preview');
+            }}
+          />
         </motion.div>
       </AnimatePresence>
     );

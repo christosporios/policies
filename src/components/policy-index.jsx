@@ -137,6 +137,9 @@ export const PolicyIndex = ({ policies, onSelect }) => {
   return (
     <div style={{ fontFamily: C.sans, background: C.bg, color: C.ink, minHeight: '100vh', WebkitFontSmoothing: 'antialiased', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ maxWidth: 960, width: '100%', padding: mobile ? '32px 20px' : '48px 40px' }}>
+        <h1 style={{ fontFamily: C.serif, fontSize: mobile ? 32 : 42, fontWeight: 700, letterSpacing: '-0.02em', color: C.ink, marginBottom: mobile ? 24 : 32, lineHeight: 1.2 }}>
+          Structured Policies
+        </h1>
         <div style={{
           display: 'grid',
           gridTemplateColumns: mobile ? '1fr' : (policies.length + 1) <= 2 ? '1fr' : 'repeat(2, 1fr)',

@@ -41,7 +41,7 @@ export const PolicyViewer = ({ policyEntry, onBack }) => {
 
   useEffect(() => {
     if (policy) document.title = `${policy.meta.title} — ${policy.meta.subtitle}`;
-    return () => { document.title = 'Policies'; };
+    return () => { document.title = 'Structured Policies'; };
   }, [policy]);
 
   useEffect(() => {
@@ -135,9 +135,65 @@ export const PolicyViewer = ({ policyEntry, onBack }) => {
   return (
     <div style={{ fontFamily: C.sans, background: C.bg, color: C.ink, fontSize: 15, lineHeight: 1.7, WebkitFontSmoothing: 'antialiased', minHeight: '100vh' }}>
 
+      {/* Print-only cover page */}
+      <div data-print-only style={{ display: 'none' }}>
+        <div style={{ minHeight: '100vh', padding: '80px 60px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: C.ink, color: '#f7f6f4', pageBreakAfter: 'always' }}>
+          <div style={{ fontFamily: C.mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(247,246,244,0.35)', marginBottom: 24 }}>
+            {policy.meta.scope} · {policy.meta.status}
+          </div>
+          <h1 style={{ fontFamily: C.serif, fontSize: 52, fontWeight: 700, lineHeight: 1.15, letterSpacing: '-0.02em', color: '#f7f6f4', marginBottom: 8 }}>
+            {policy.meta.title}
+          </h1>
+          <div style={{ fontFamily: C.serif, fontSize: 32, fontStyle: 'italic', fontWeight: 400, color: 'rgba(247,246,244,0.6)', lineHeight: 1.3, marginBottom: 32 }}>
+            {policy.meta.subtitle}
+          </div>
+          <p style={{ fontSize: 15, fontWeight: 300, color: 'rgba(247,246,244,0.65)', lineHeight: 1.8, maxWidth: 560, marginBottom: 48, borderLeft: '2px solid rgba(247,246,244,0.2)', paddingLeft: 16 }}>
+            {policy.meta.tagline?.replace(/\{\{[^}]+\}\}/g, '').replace(/\n/g, ' ').trim()}
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, auto)', gap: '0 40px', marginBottom: 56 }}>
+            {[
+              { label: 'Scope', value: policy.meta.scope },
+              { label: 'Status', value: policy.meta.status },
+              { label: 'Annual Cost', value: fmtRange(summary.annual.low, summary.annual.high) },
+              { label: 'Setup Cost', value: fmtRange(summary.setup.low, summary.setup.high) },
+            ].map(({ label, value }) => (
+              <div key={label}>
+                <div style={{ fontFamily: C.mono, fontSize: 8, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(247,246,244,0.3)', marginBottom: 4 }}>{label}</div>
+                <div style={{ fontSize: 13, fontWeight: 500, color: 'rgba(247,246,244,0.75)' }}>{value}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ borderTop: '1px solid rgba(247,246,244,0.12)', paddingTop: 32 }}>
+            <div style={{ fontFamily: C.mono, fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(247,246,244,0.3)', marginBottom: 16 }}>Contents</div>
+            {policy.measures.map((m, i) => (
+              <div key={m.id} style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 10 }}>
+                <span style={{ fontFamily: C.mono, fontSize: 11, color: 'rgba(247,246,244,0.3)', minWidth: 24 }}>{String(i + 1).padStart(2, '0')}</span>
+                <span style={{ fontFamily: C.serif, fontSize: 16, fontWeight: 600, color: 'rgba(247,246,244,0.85)' }}>{m.title}</span>
+                <span style={{ flex: 1, borderBottom: '1px dotted rgba(247,246,244,0.1)', marginBottom: 4 }} />
+                <span style={{ fontFamily: C.mono, fontSize: 11, color: 'rgba(247,246,244,0.35)' }}>{m.subtitle}</span>
+              </div>
+            ))}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 10 }}>
+              <span style={{ fontFamily: C.mono, fontSize: 11, color: 'rgba(247,246,244,0.3)', minWidth: 24 }}></span>
+              <span style={{ fontFamily: C.serif, fontSize: 16, fontWeight: 600, color: 'rgba(247,246,244,0.85)' }}>Summary & Timeline</span>
+            </div>
+            {policy.kpis && (
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 10 }}>
+                <span style={{ fontFamily: C.mono, fontSize: 11, color: 'rgba(247,246,244,0.3)', minWidth: 24 }}></span>
+                <span style={{ fontFamily: C.serif, fontSize: 16, fontWeight: 600, color: 'rgba(247,246,244,0.85)' }}>Performance</span>
+              </div>
+            )}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
+              <span style={{ fontFamily: C.mono, fontSize: 11, color: 'rgba(247,246,244,0.3)', minWidth: 24 }}></span>
+              <span style={{ fontFamily: C.serif, fontSize: 16, fontWeight: 600, color: 'rgba(247,246,244,0.85)' }}>Sources ({policy.references?.length || 0})</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Sticky mobile header */}
       {mobile && (
-        <div style={{
+        <div data-no-print style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
           background: C.ink, color: '#f7f6f4', padding: '10px 20px',
           fontFamily: C.mono, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase',
@@ -152,7 +208,7 @@ export const PolicyViewer = ({ policyEntry, onBack }) => {
       )}
 
       {/* HEADER */}
-      <header ref={headerRef} style={{ background: C.ink, color: '#f7f6f4', padding: mobile ? '40px 0 36px' : '64px 0 56px', position: 'relative', overflow: 'hidden' }}>
+      <header data-no-print ref={headerRef} style={{ background: C.ink, color: '#f7f6f4', padding: mobile ? '40px 0 36px' : '64px 0 56px', position: 'relative', overflow: 'hidden' }}>
         {policy.meta.background_image && (
           <motion.div
             layoutId={onBack ? `policy-bg-${slug}` : undefined}
@@ -170,7 +226,7 @@ export const PolicyViewer = ({ policyEntry, onBack }) => {
           style={{ maxWidth: 860, margin: '0 auto', padding: `0 ${px}px`, position: 'relative' }}
         >
           {onBack && (
-            <span onClick={onBack} style={{ fontFamily: C.mono, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(247,246,244,0.4)', cursor: 'pointer', display: 'inline-block', marginBottom: 16 }}>
+            <span data-no-print onClick={onBack} style={{ fontFamily: C.mono, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(247,246,244,0.4)', cursor: 'pointer', display: 'inline-block', marginBottom: 16 }}>
               &larr; All policies
             </span>
           )}
@@ -204,7 +260,7 @@ export const PolicyViewer = ({ policyEntry, onBack }) => {
       </header>
 
       {/* MEASURE STRIP */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35, delay: onBack ? 0.3 : 0 }} style={{ background: C.card, borderBottom: `1px solid ${C.rule}` }}>
+      <motion.div data-no-print initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35, delay: onBack ? 0.3 : 0 }} style={{ background: C.card, borderBottom: `1px solid ${C.rule}` }}>
         <div style={{ maxWidth: 860, margin: '0 auto', padding: mobile ? 0 : `0 ${px}px`, display: 'grid', gridTemplateColumns: mobile ? '1fr' : `repeat(${policy.measures.length}, 1fr)` }}>
           {policy.measures.map((m, i) => {
             const isLast = i === policy.measures.length - 1;
@@ -247,7 +303,7 @@ export const PolicyViewer = ({ policyEntry, onBack }) => {
       <main style={{ padding: mobile ? '32px 0' : '56px 0' }}>
         <div style={{ maxWidth: 860, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: mobile ? '0 20px' : '0 40px', marginBottom: 4 }}>
           <span style={{ fontFamily: C.mono, fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.label }}>Policy Measures</span>
-          <span onClick={toggleAll} style={{ fontFamily: C.mono, fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.faint, cursor: 'pointer', padding: '4px 0' }}>
+          <span data-no-print onClick={toggleAll} style={{ fontFamily: C.mono, fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.faint, cursor: 'pointer', padding: '4px 0' }}>
             {allOpen ? 'Collapse all' : 'Expand all'}
           </span>
         </div>
@@ -271,22 +327,31 @@ export const PolicyViewer = ({ policyEntry, onBack }) => {
       </main>
 
       {/* FOOTER */}
-      <footer style={{ borderTop: `1px solid ${C.rule}`, padding: mobile ? '24px 20px' : '32px 40px', maxWidth: 860, margin: '0 auto', display: 'flex', flexDirection: mobile ? 'column' : 'row', justifyContent: 'space-between', alignItems: mobile ? 'flex-start' : 'center', gap: mobile ? 12 : 8 }}>
-        <span style={{ fontFamily: C.mono, fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: C.faint }}>{policy.meta.scope} · {policy.meta.title}</span>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <span
-            onClick={() => {
-              navigator.clipboard.writeText(policyYaml).then(() => {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-              });
-            }}
-            style={{ fontFamily: C.mono, fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: C.faint, cursor: 'pointer', borderBottom: `1px dotted ${C.rule}`, paddingBottom: 1 }}
-          >
-            {copied ? 'Copied' : 'Copy policy file'}
+      <footer style={{ borderTop: `1px solid ${C.rule}`, maxWidth: 860, margin: '0 auto', padding: mobile ? '20px 20px' : '24px 40px' }}>
+        <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', justifyContent: 'space-between', alignItems: mobile ? 'flex-start' : 'center', gap: mobile ? 16 : 8 }}>
+          <span style={{ fontFamily: C.mono, fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: C.faint }}>
+            {policy.meta.scope} · {policy.meta.title}
           </span>
-          {policy.meta.footer && <span style={{ fontSize: 12, color: C.faint }}>{policy.meta.footer}</span>}
+          <div data-no-print style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            {[
+              { label: copied ? 'Copied' : 'Copy YAML', onClick: () => navigator.clipboard.writeText(policyYaml).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2000); }) },
+              { label: 'Print', onClick: () => window.print() },
+            ].map(({ label, onClick }, i) => (
+              <span key={label}>
+                {i > 0 && <span style={{ color: C.rule, margin: '0 6px' }}>·</span>}
+                <span
+                  onClick={onClick}
+                  style={{ fontFamily: C.mono, fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: C.faint, cursor: 'pointer', padding: '4px 0', transition: 'color 0.2s' }}
+                  onMouseEnter={e => e.currentTarget.style.color = C.mid}
+                  onMouseLeave={e => e.currentTarget.style.color = C.faint}
+                >
+                  {label}
+                </span>
+              </span>
+            ))}
+          </div>
         </div>
+        {policy.meta.footer && <div style={{ fontSize: 11, color: C.faint, marginTop: 12, lineHeight: 1.5 }}>{policy.meta.footer}</div>}
       </footer>
     </div>
   );

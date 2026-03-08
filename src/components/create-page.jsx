@@ -1,4 +1,6 @@
+import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import yaml from 'js-yaml';
 import { C } from '../lib/theme';
 import { useIsMobile } from '../hooks/use-is-mobile';
 import { policies } from '../lib/policies';
@@ -35,7 +37,82 @@ const DownloadButton = ({ href, children }) => (
   </a>
 );
 
-export const CreatePage = ({ onBack }) => {
+const DropZone = ({ onFile }) => {
+  const [dragging, setDragging] = useState(false);
+  const [error, setError] = useState(null);
+
+  const processText = useCallback((text) => {
+    setError(null);
+    try {
+      const data = yaml.load(text);
+      if (!data?.meta?.title) {
+        setError('Missing meta.title — is this a valid .policy.yaml file?');
+        return;
+      }
+      onFile({ slug: 'preview', raw: text, data, error: null });
+    } catch (e) {
+      setError(`YAML parse error: ${e.message}`);
+    }
+  }, [onFile]);
+
+  const handleFile = useCallback((file) => {
+    if (!file) return;
+    file.text().then(processText);
+  }, [processText]);
+
+  const onDrop = useCallback((e) => {
+    e.preventDefault();
+    setDragging(false);
+    const file = e.dataTransfer.files[0];
+    if (file) handleFile(file);
+    else {
+      const text = e.dataTransfer.getData('text');
+      if (text) processText(text);
+    }
+  }, [handleFile, processText]);
+
+  const onPaste = useCallback((e) => {
+    const text = e.clipboardData.getData('text');
+    if (text) processText(text);
+  }, [processText]);
+
+  return (
+    <div
+      onDragOver={e => { e.preventDefault(); setDragging(true); }}
+      onDragLeave={() => setDragging(false)}
+      onDrop={onDrop}
+      onPaste={onPaste}
+      onClick={() => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.yaml,.yml';
+        input.onchange = (e) => handleFile(e.target.files[0]);
+        input.click();
+      }}
+      style={{
+        border: `1px dashed ${dragging ? C.mid : C.rule}`,
+        borderRadius: 6,
+        padding: '36px 24px',
+        textAlign: 'center',
+        cursor: 'pointer',
+        background: dragging ? C.hover : 'transparent',
+        transition: 'background 0.2s, border-color 0.2s',
+      }}
+    >
+      <div style={{ fontFamily: C.serif, fontSize: 17, fontWeight: 600, color: C.ink, marginBottom: 6 }}>
+        Drop a .policy.yaml file here
+      </div>
+      <div style={{ fontSize: 13, color: C.faint }}>
+        or click to browse, or paste YAML content
+      </div>
+      {error && (
+        <div style={{ fontFamily: C.mono, fontSize: 12, color: '#c44', marginTop: 12 }}>{error}</div>
+      )}
+    </div>
+  );
+};
+
+export const CreatePage = ({ onBack, onPreview }) => {
   const mobile = useIsMobile();
   const px = mobile ? 20 : 40;
 
@@ -66,9 +143,13 @@ export const CreatePage = ({ onBack }) => {
       </header>
 
       <main style={{ maxWidth: 860, margin: '0 auto', padding: mobile ? '40px 20px' : '56px 40px' }}>
-        <p style={{ fontSize: 16, color: C.mid, lineHeight: 1.75, marginBottom: 48 }}>
-          Each policy on this site is a single YAML file. You write the policy, drop the file in, and the site renders it — budgets, timelines, KPIs, references, and all.
+        <p style={{ fontSize: 16, color: C.mid, lineHeight: 1.75, marginBottom: 32 }}>
+          Each policy on this site is a single YAML file. You write the policy, and the site renders it — budgets, timelines, KPIs, references, and all. Drop your file below to preview it instantly.
         </p>
+
+        <div style={{ marginBottom: 48 }}>
+          <DropZone onFile={onPreview} />
+        </div>
 
         <Step number={1} title="Set up a Claude project">
           <p style={{ marginBottom: 12 }}>
@@ -90,6 +171,10 @@ export const CreatePage = ({ onBack }) => {
             and any constraints. Claude will research the legal framework, find cost benchmarks, identify case studies, and gather
             the statistics you need.
           </p>
+          <p style={{ marginTop: 8 }}>
+            You can also start from an existing policy — download one from below, upload it to the chat, and ask Claude to
+            deconstruct it critically: what works, what's weak, what's missing. Then iterate from there.
+          </p>
         </Step>
 
         <Step number={3} title="Generate the policy">
@@ -100,16 +185,20 @@ export const CreatePage = ({ onBack }) => {
           </p>
           <p style={{ marginTop: 8 }}>
             Review the output. Push Claude on weak citations, vague targets, or missing legal authority.
-            The best policies are specific and honest about uncertainty.
+            The best policies are specific and honest about uncertainty. Drop the file above to preview how it will look.
           </p>
         </Step>
 
-        <Step number={4} title="Publish">
+        <Step number={4} title="Preview and publish">
           <p>
-            Clone the <a href="https://github.com/christosporios/policies" target="_blank" rel="noopener" style={{ color: C.ink, textDecoration: 'underline' }}>repository</a>, drop
-            your <Code>.policy.yaml</Code> file into the <Code>policies/</Code> folder,
-            add a background image to <Code>public/</Code>, and run <Code>npm run dev</Code> to
-            preview locally. Push your changes and open a pull request to publish.
+            Drop your <Code>.policy.yaml</Code> file into the upload area above to see a full preview
+            of how your policy will look — budgets, timelines, KPIs, and all. The preview is local to your
+            browser and can't be shared.
+          </p>
+          <p style={{ marginTop: 8 }}>
+            When you're happy with it, clone the <a href="https://github.com/christosporios/policies" target="_blank" rel="noopener" style={{ color: C.ink, textDecoration: 'underline' }}>repository</a>,
+            add your file to the <Code>policies/</Code> folder along with a background image
+            in <Code>public/</Code>, and open a pull request to publish it on the site.
           </p>
         </Step>
 
