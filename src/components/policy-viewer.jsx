@@ -30,7 +30,7 @@ export const PolicyViewer = ({ policyEntry, onBack }) => {
     if (!policy) return new Set();
     const hash = window.location.hash.slice(1);
     if (hash && allIds.includes(hash)) return new Set([hash]);
-    return new Set([policy.measures[0].id]);
+    return new Set();
   });
   const hasUserNavigated = useRef(false);
 
