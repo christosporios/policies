@@ -2,7 +2,7 @@ meta:
   title: Athens Mobility Reform
   subtitle: A Three-Measure Policy Proposal
   scope: Municipality of Athens
-  status: Proposal — Internal Review
+  status: Proposal
   background_image: /hero-bg.jpg
   tagline: >
     Athens has become a parking lot. With {{stat:cars_per_capita}} cars per capita —
@@ -11,12 +11,8 @@ meta:
     the supply of parking, provide credible alternatives, and make not driving
     more appealing than driving. Each measure is within the mayor's direct legal
     authority; together they are designed to be mutually reinforcing.
-  costs:
-    setup_low: 3250000
-    setup_high: 4350000
-    annual_low: 980000
-    annual_high: 1290000
   footer: All costs in EUR · Numbers grounded in cited sources · March 2026
+
 
 measures:
 
@@ -36,11 +32,55 @@ measures:
         survey is needed to establish a current baseline.
 
         The core problem is not the absence of rules but the absence of credible
-        deterrence. The municipality holds over {{stat:outstanding_fines}} in outstanding
+        deterrence. The municipality holds {{stat:outstanding_fines}} in outstanding
         unpaid fines with a documented collection rate of approximately
         {{stat:collection_rate}}. Fine notices are commonly sent years after the
-        violation, and physical towing is extremely rare. The enforcement cycle must be
-        restructured before volume is increased.
+        violation, and physical towing is extremely rare.
+
+        **Why the collection rate is 8% — a pipeline failure, not an enforcement
+        failure.** Under Article 71 of Law 542/1977 {{ref:law_542_1977}}, parking fines
+        must be fiscally certified (*ταμειακή βεβαίωση*) within three years of the
+        violation year or they are legally extinguished. The Hellenic Traffic Police
+        currently take approximately 1.5 years to hand violation records to the municipal
+        Revenue Certification Department — a delay confirmed by the Athens Deputy Mayor
+        in October 2025 {{ref:deputy_mayor_2025}} — consuming half the certification
+        window before municipal processing begins. Address-based notification failures,
+        manual data entry, and a chronically understaffed certification unit consume the
+        remainder.
+
+        The result, confirmed by Ministry of Interior Circular 534/38880/2023 and
+        Clarification Letter 17729/23.02.2024 {{ref:moi_circular_2023}}, is that a
+        significant portion of the €143.7M backlog has already prescribed and is legally
+        uncollectable. The gap between €143.7M total certified debt and only €60.1M
+        currently blocked at AADE (68,412 ΑΦΜs) {{ref:athens_voice_2022}} indicates that
+        large volumes of certified debt are not being referred for enforcement at all.
+        This backlog is treated as a sunk cost. The programme focuses entirely on
+        restructuring the new pipeline.
+
+        Five administrative fixes are available to the municipality today without
+        legislation: (1) electronic notification via gov.gr, operational since July 2025
+        under Law 5142/2024 {{ref:law_5142_2024}}, eliminating the address-verification
+        bottleneck entirely; (2) electronic bank account seizure, available since October
+        2024 under Law 5143/2024 {{ref:law_5143_2024}}; (3) a dedicated fast-track
+        certification unit targeting certification within 6 months of violation;
+        (4) systematic AADE transmission for all certified debts above the €293.47
+        statutory threshold {{ref:kya_45081_1997}}; and (5) inter-agency coordination
+        protocols with the Attica Traffic Police Directorate for monthly electronic batch
+        transfers of violation records, addressing the 1.5-year handover delay directly.
+        Together these fixes are the primary lever for reaching the ≥25% collection
+        target at month 12. The enforcement cycle must be restructured before volume
+        is increased.
+
+        **Legal position on towing — assertive but uncertain.** Under {{legal:law_5003}},
+        Article 3(1)(β)(βα) assigns municipal police enforcement of Article 34(8) of the
+        Highway Code — the towing provision — by designating them as "competent police
+        organs" for this purpose. The new Highway Code ({{legal:law_5209}}) goes further:
+        secondary sources indicate it explicitly references "the municipality's tow truck"
+        alongside the Traffic Police's. The municipality should assert this authority
+        directly and act on it. However, no Greek municipality has ever independently
+        operated tow trucks for parking enforcement. There is no court ruling, no Legal
+        Council of the State opinion, and no ministry circular that has directly tested
+        or validated this power. Legal uncertainty exists and must be acknowledged.
       stats:
         - id: cars_per_capita
           label: Cars per capita (Attiki)
@@ -58,41 +98,6 @@ measures:
           label: Fine collection rate
           value: 8%
           source: "{{ref:athens_voice_2022}}"
-      notes:
-        - The illegal parking figure dates from 2012. A current municipal survey is needed to establish a baseline.
-
-    action:
-      body: |
-        The municipal police acquires 10 tow trucks and deploys dedicated enforcement
-        teams across all 7 districts, 7 days a week. Priority targets: pavement parking,
-        bus stop obstruction, pedestrian crossings.
-
-        **Legal position on towing — assertive but uncertain.** Under {{legal:law_5003}},
-        Article 3(1)(β)(βα) assigns municipal police enforcement of Article 34(8) of the
-        Highway Code — the towing provision — by designating them as "competent police
-        organs" for this purpose. The new Highway Code ({{legal:law_5209}}) goes further:
-        secondary sources indicate it explicitly references "the municipality's tow truck"
-        alongside the Traffic Police's. The municipality should assert this authority
-        directly and act on it. However, no Greek municipality has ever independently
-        operated tow trucks for parking enforcement. There is no court ruling, no Legal
-        Council of the State opinion, and no ministry circular that has directly tested
-        or validated this power. Legal uncertainty exists and must be acknowledged.
-
-        To manage this risk without surrendering operational momentum, the municipality
-        simultaneously pursues two tracks: (1) it acquires tow trucks and begins
-        operations on the basis that the statutory authority is clear; and (2) it
-        negotiates a Memorandum of Understanding with the Hellenic Traffic Police
-        establishing joint operations, agreed dispatch protocols, and shared impound
-        facilities. The MoU serves a dual purpose: it provides operational cover while
-        the legal question remains unsettled, and it creates a durable coordination
-        framework that survives any subsequent legal challenge. If a court or ministry
-        later confirms municipal towing authority, the MoU becomes a cooperation
-        agreement rather than a dependency. If the authority is narrowed, the MoU
-        ensures operations continue without interruption.
-
-        A fast-track debt certification process cuts the fine-to-collection lag from
-        years to weeks. Towing revenue and improved fine collection are treated as
-        operational upside, not budget assumptions.
       legal:
         - id: law_5003
           citation: "Law 5003/2022, Article 3(1)(β)(βα)"
@@ -107,27 +112,56 @@ measures:
             explicit reference to "tow trucks of the municipality or the Traffic Police."
             Operative text should be verified against the official ΦΕΚ before filing
             any legal position.
+      case_studies:
+        - name: Oslo Parking Removal Programme
+          location: Oslo, Norway
+          period: "2016–2019"
+          type: positive
+          body: |
+            Oslo removed approximately 760 on-street spaces from the city centre over
+            three years, replacing them with cycle lanes, parklets, and pedestrian
+            infrastructure. Measured outcome: a 28% drop in city-centre car traffic
+            {{ref:oslo_fastcompany}}. The programme ran alongside congestion pricing and
+            significant transit investment — the traffic reduction was multi-causal and
+            cannot be attributed to parking removal alone.
+          lesson: |
+            The parking removal component is directly replicable. Congestion pricing
+            requires national-level coordination beyond the mayor's current mandate and
+            is not proposed here.
       notes:
-        - No municipality has ever independently towed vehicles for parking enforcement in Greece. The authority exists in statute but is operationally untested.
-        - Towing revenue and improved fine collection are treated as operational upside, not budget assumptions.
-        - The MoU with Traffic Police is both a risk-mitigation tool and a permanent operational asset.
+        - The illegal parking figure dates from 2012. A current municipal survey is needed to establish a baseline.
+        - >
+          The 8% collection rate reflects a structural pipeline failure. The five
+          administrative fixes identified above (gov.gr notification, electronic
+          seizure, certification unit, AADE transmission, Traffic Police handover
+          protocol) are available immediately and require no legislation.
 
-    case_studies:
-      - name: Oslo Parking Removal Programme
-        location: Oslo, Norway
-        period: "2016–2019"
-        type: positive
-        body: |
-          Oslo removed approximately 760 on-street spaces from the city centre over three
-          years, replacing them with cycle lanes, parklets, and pedestrian infrastructure.
-          Measured outcome: a 28% drop in city-centre car traffic {{ref:oslo_fastcompany}}.
-          The programme ran alongside congestion pricing and significant transit investment
-          — the traffic reduction was multi-causal and cannot be attributed to parking
-          removal alone.
-        lesson: |
-          The parking removal component is directly replicable. Congestion pricing requires
-          national-level coordination beyond the mayor's current mandate and is not
-          proposed here.
+    action:
+      body: |
+        The municipal police acquires 10 tow trucks and deploys dedicated enforcement
+        teams across all 7 districts, 7 days a week. Priority targets: pavement parking,
+        bus stop obstruction, pedestrian crossings.
+
+        To manage the legal uncertainty without surrendering operational momentum, the
+        municipality simultaneously pursues two tracks: (1) it acquires tow trucks and
+        begins operations on the basis that the statutory authority is clear; and (2) it
+        negotiates a Memorandum of Understanding with the Hellenic Traffic Police
+        establishing joint operations and agreed dispatch protocols. The MoU serves
+        a dual purpose: it provides operational cover while
+        the legal question remains unsettled, and it creates a durable coordination
+        framework that survives any subsequent legal challenge. If a court or ministry
+        later confirms municipal towing authority, the MoU becomes a cooperation
+        agreement rather than a dependency. If the authority is narrowed, the MoU
+        ensures operations continue without interruption.
+
+        For the fine collection pipeline, the municipality immediately implements the
+        five administrative interventions identified in context: gov.gr electronic
+        notification, electronic bank account seizure via OTA Node, a dedicated
+        fast-track certification unit established by Municipal Council decision modifying
+        the ΟΕΥ, systematic AADE transmission above the €293.47 threshold, and a joint
+        inter-agency protocol with the Attica Traffic Police Directorate for monthly
+        electronic batch transfer of violation records. Towing revenue and improved fine
+        collection are treated as operational upside, not budget assumptions.
 
     budget:
       items:
@@ -137,24 +171,79 @@ measures:
           low: 800000
           high: 1200000
         - id: officers
-          label: 20 additional officers
+          label: 20 additional officers (annual; employer social contributions included)
           type: annual
           low: 400000
           high: 500000
         - id: impound
-          label: "Impound facility — lease (€0 if MoU secures Traffic Police facility; up to €400k/year if standalone)"
+          label: Impound facility lease
           type: annual
-          low: 0
+          low: 150000
           high: 400000
       notes:
         - No revenue credit taken for fines or towing fees. Programme is sized to be defensible on cost alone.
-        - Impound at €0 assumes MoU secures shared Traffic Police facility. This must be treated as a minimum MoU requirement, not an assumption. If it fails, €150–400k/year standalone lease applies.
+
+    kpis:
+      - id: tows_per_week
+        label: Tows per week
+        type: operational
+        unit: vehicles/week
+        baseline: "~0 (no independent municipal towing currently)"
+        target: "≥70/week by month 6; ≥175/week by month 12"
+        frequency: monthly
+        source: Municipal police operations log
+
+      - id: fine_notices_issued
+        label: Fine notices issued
+        type: operational
+        unit: notices/month
+        baseline: To be established via municipal survey (month 1)
+        target: "≥5,000/month by month 6 across 7 districts"
+        frequency: monthly
+        source: Municipal police operations log
+
+      - id: fine_collection_rate
+        label: Fine collection rate
+        type: outcome
+        unit: percentage
+        baseline: "8% ({{ref:athens_voice_2022}})"
+        target: "≥25% by month 12; ≥40% by month 24"
+        frequency: quarterly
+        source: Municipal finance department
+        note: >
+          This is the single most important enforcement KPI. The 8% baseline is a
+          political equilibrium, not a technical limit. Movement on this number is
+          the clearest signal that deterrence is working.
+
+      - id: pipeline_certification_lag
+        label: Mean days from violation to fiscal certification
+        type: operational
+        unit: days
+        baseline: "~540 days (1.5yr Traffic Police handover + municipal processing)"
+        target: "≤180 days by month 12"
+        frequency: quarterly
+        source: Municipal Revenue Certification Department
+        note: >
+          Direct measure of the pipeline fix. If certification lag does not fall,
+          the five administrative interventions have not been implemented effectively.
+
+      - id: pavement_obstruction_complaints
+        label: Pavement obstruction complaints (311 / municipal complaints system)
+        type: proxy
+        unit: complaints/month
+        baseline: To be established from existing complaints data
+        target: "≥30% reduction from baseline by month 18"
+        frequency: quarterly
+        source: Municipal complaints system
+        note: >
+          Proxy for illegal parking volume. Cheaper than a full street survey and
+          politically legible — complaint reduction is a story the mayor can tell.
 
 
   - id: space_conversion
     title: Convert 500 Legal Parking Spaces
     subtitle: Parklets · E-bike hubs · AthensMoves stops · Three tranches over 30 months
-    tagline: "Permanently reduce parking supply — 2,000 m² green space · 1,200 e-bike docks · 100 stops. Fewer spaces means fewer car trips; conversion replaces parking with alternatives that make not driving the easier choice."
+    tagline: "Permanently reduce parking supply — 2,000 m² green space · 1,200 e-bike docks · 100 stops."
     icon: leaf
 
     context:
@@ -167,11 +256,20 @@ measures:
 
         The PARKinATHENS system covers {{stat:parkinathens_total}} controlled on-street
         spaces ({{stat:parkinathens_breakdown}}). A comprehensive count of all legal
-        on-street parking — controlled and uncontrolled — has not been publicly published;
-        a municipal inventory should be conducted before the conversion list is finalised.
+        on-street parking — controlled and uncontrolled — has not been publicly published.
+        A municipal inventory should be conducted before the conversion list is finalised.
         Converting 500 spaces across 30 months — roughly 4.4% of the controlled inventory
-        — is material without being administratively implausible, and is well within
-        Municipal Council authority under {{legal:law_5209_conv}}.
+        — is material without being administratively implausible.
+
+        The programme is explicitly designed to reduce the city's total parking supply,
+        not merely to reallocate space. Each conversion is permanent. The sequencing of
+        conversions is coordinated with AthensMoves launches so that parking removal and
+        transit alternatives arrive in the same area at the same time: enforcement without
+        alternatives generates political backlash; alternatives without enforcement
+        generate no behaviour change.
+
+        Each conversion requires a Municipal Council decision and a traffic study under
+        {{legal:law_5209_conv}} — this is not a unilateral executive action.
       stats:
         - id: parkinathens_total
           label: Controlled on-street spaces (PARKinATHENS)
@@ -181,32 +279,6 @@ measures:
           label: Breakdown by category
           value: "5,177 residents' + 3,463 visitors' + 1,604 motorcycle + 1,000 disability"
           source: "{{ref:parkinathens}}"
-      notes:
-        - A comprehensive count of uncontrolled on-street spaces has not been publicly published. A municipal inventory is needed before the conversion list is finalised.
-        - The conversion programme is explicitly designed to reduce the city's total parking supply, not merely to reallocate space. Each conversion is permanent.
-
-    action:
-      body: |
-        500 on-street spaces are converted across three tranches over 30 months,
-        coordinated geographically with AthensMoves zone launches so that parking
-        removal and transit alternatives arrive in the same area at the same time.
-        This sequencing is deliberate: enforcement without alternatives generates
-        political backlash; alternatives without enforcement generate no behaviour change.
-
-        Tranche 1 (150 spaces, months 9–12) is concentrated in central Kypseli — the
-        interior streets between Victoria and Pedion Areos metro stations, where walking
-        distance to rail exceeds 15 minutes and bus coverage is limited to the Patission
-        axial corridor. Tranche 2 (200 spaces, months 18–24) expands into western Patissia
-        and Pangrati/Kaisariani, conditional on Zone 1 ridership data from AthensMoves.
-        Tranche 3 (150 spaces, months 24–30) covers remaining priority streets citywide,
-        weighted toward AthensMoves stop infrastructure.
-
-        Each conversion requires a Municipal Council decision and a traffic study under
-        {{legal:law_5209_conv}} — this is not a unilateral executive action. Site
-        selection criteria: spaces currently obstructing pavements, locations adjacent to
-        AthensMoves service zones, streets with documented pedestrian conflict, and areas
-        with no adjacent private parking supply. Resident and business consultation is
-        built into each traffic study to manage political friction ahead of Council votes.
       legal:
         - id: law_5209_conv
           citation: "Law 5209/2025 (KOK), Article 55"
@@ -214,6 +286,39 @@ measures:
             Municipal Council authority to alter road cross-sections and parking
             designations, subject to traffic study and review by Coordinator of
             Decentralized Administration.
+      case_studies:
+        - name: Barcelona Superblock Sant Antoni
+          location: Barcelona, Spain
+          period: "2017–ongoing"
+          type: positive
+          body: |
+            Barcelona's superblock programme redirects through-traffic to perimeter roads,
+            converting interior streets into pedestrian and cycling space. Results in Sant
+            Antoni: car traffic fell by 82%, NO₂ dropped 33%. Each conversion was preceded
+            by public consultation and a traffic study — precisely the approach proposed
+            here. Incremental conversion with genuine consultation is what distinguished
+            Barcelona's success from Athens's failed "Great Walk" pedestrianisation (2020),
+            which lacked both.
+          lesson: |
+            Scale matters less than process. Incremental conversion with genuine public
+            consultation is the deciding variable.
+      notes:
+        - A comprehensive count of uncontrolled on-street spaces has not been publicly published. A municipal inventory is needed before the conversion list is finalised.
+
+    action:
+      body: |
+        500 on-street spaces are converted across three tranches over 30 months. Site
+        selection criteria: spaces currently obstructing pavements, locations adjacent to
+        AthensMoves service area, streets with documented pedestrian conflict, and areas
+        with no adjacent private parking supply. Resident and business consultation is
+        built into each traffic study to manage political friction ahead of Council votes.
+
+        Tranche 1 (150 spaces, months 9–12) concentrates on central Kypseli — the
+        interior streets between Victoria and Pedion Areos metro stations. Tranche 2
+        (200 spaces, months 18–24) expands into western Patissia and Pangrati/Kaisariani,
+        conditional on AthensMoves ridership data from the first six months of operation.
+        Tranche 3 (150 spaces, months 24–30) covers remaining priority streets citywide,
+        weighted toward AthensMoves stop infrastructure.
       tranches:
         - tranche: 1
           spaces: 150
@@ -223,7 +328,7 @@ measures:
         - tranche: 2
           spaces: 200
           months: "18–24"
-          area: Western Patissia + Pangrati/Kaisariani (conditional on Zone 1 data)
+          area: Western Patissia + Pangrati/Kaisariani (conditional on AthensMoves month 1–6 data)
           mix: "80 parklets · 80 e-bike docks · 40 AthensMoves stops"
         - tranche: 3
           spaces: 150
@@ -243,23 +348,6 @@ measures:
           label: AthensMoves stops
           output: Dedicated pick-up / drop-off
           icon: bus
-
-    case_studies:
-      - name: Barcelona Superblock Sant Antoni
-        location: Barcelona, Spain
-        period: "2017–ongoing"
-        type: positive
-        body: |
-          Barcelona's superblock programme redirects through-traffic to perimeter roads,
-          converting interior streets into pedestrian and cycling space. Results in Sant
-          Antoni: car traffic fell by 82%, NO₂ dropped 33%. Critically, each conversion
-          was preceded by public consultation and a traffic study — precisely the approach
-          proposed here. Incremental conversion with genuine consultation is what
-          distinguished Barcelona's success from Athens's failed "Great Walk"
-          pedestrianisation (2020), which lacked both.
-        lesson: |
-          Scale matters less than process. Incremental conversion with genuine public
-          consultation is the deciding variable.
 
     budget:
       items:
@@ -285,82 +373,117 @@ measures:
           high: 75000
       notes:
         - >
-          E-bike infrastructure covers docking and charging hardware only. If the municipality
-          operates the bikes directly rather than licensing to a private operator, e-bike
-          procurement (est. €1,500–3,000 per bike) is an additional capital item requiring
-          a separate business case. Private operator licensing is strongly preferred and
-          avoids this cost entirely.
-        - >
           The municipality applies in parallel for ERDF/Cohesion Fund co-financing
           (up to 85%) {{ref:erdf}} and EUI Innovative Actions (up to 80%, max €5M).
           Greece's absorption record is slow — realistic reimbursement is 2027–2029
-          at earliest. The full cost is budgeted municipally; any grant received reduces
-          net capital outlay retrospectively.
+          at earliest. The full cost is budgeted municipally; any grant received
+          reduces net capital outlay retrospectively.
+
+    kpis:
+      - id: spaces_converted
+        label: Spaces converted (cumulative)
+        type: operational
+        unit: spaces
+        baseline: 0
+        target: "150 by month 12 · 350 by month 24 · 500 by month 30"
+        frequency: monthly
+        source: Programme management office
+
+      - id: green_area_delivered
+        label: Green/pedestrian area delivered (cumulative)
+        type: outcome
+        unit: m²
+        baseline: 0
+        target: "~750 m² by month 12 · ~2,000 m² by month 30"
+        frequency: quarterly
+        source: Programme management office
+
+      - id: ebike_docks_operational
+        label: E-bike docking points operational (cumulative)
+        type: operational
+        unit: docking points
+        baseline: 0
+        target: "~360 by month 12 · ~1,200 by month 30"
+        frequency: quarterly
+        source: Operator data (if licensed) or municipal infrastructure log
+
+      - id: bikes_stored
+        label: Bikes stored / docked at peak hour
+        type: outcome
+        unit: bikes
+        baseline: 0
+        target: ">60% dock occupancy at peak by month 18"
+        frequency: monthly
+        source: Operator data
+        note: >
+          Dock occupancy is a better signal than dock count — empty docks mean the
+          infrastructure exists but is not being used. Peak-hour occupancy above 60%
+          indicates genuine demand.
+
+      - id: parkinathens_utilisation
+        label: PARKinATHENS controlled space utilisation in converted zones
+        type: proxy
+        unit: percentage occupancy
+        baseline: To be established from PARKinATHENS sensor data
+        target: "No increase in utilisation in adjacent streets (displacement check)"
+        frequency: quarterly
+        source: PARKinATHENS operator data
+        note: >
+          Proxy for modal shift and displacement effect. If removed spaces cause
+          adjacent controlled spaces to fill up, drivers are circling rather than
+          switching modes — the conversion is displacing parking, not reducing it.
+          Flat or falling utilisation in adjacent streets is the signal that
+          behaviour is actually changing.
 
 
   - id: athensmoves
     title: AthensMoves — On-Demand Minibus
     subtitle: Municipal Development Company · OASA programmatic agreement · Unified ticket
-    tagline: First/last-mile in central Kypseli, OASA-integrated, 8 EVs — the positive alternative that makes not owning a car a viable choice
+    tagline: City-wide on-demand minibus that competes with the car, not with OASA — rides offered only where driving is 50% faster or more, making AthensMoves a genuine car alternative
     icon: bus
 
     context:
       body: |
         Enforcement and space conversion reduce the supply of parking. For this to result
         in fewer car trips — rather than simply more frustrated drivers — residents need a
-        credible alternative for the journeys currently made by car. Athens's fixed-route
-        network (metro, tram, bus) covers main arteries well but leaves interior
-        neighbourhoods underserved in two distinct ways: walking distance to rail, and
-        frequency on secondary bus routes. AthensMoves targets both gaps.
+        credible alternative for journeys currently made by car. The key word is
+        *alternative to the car*. A service that merely replicates what OASA already
+        offers more conveniently does not change behaviour; it attracts existing transit
+        users and walkers while leaving car drivers untouched.
 
-        Zone 1 (central Kypseli) has a rail access gap: the interior streets between
-        Victoria and Pedion Areos stations sit 1,350–1,770m from the nearest Line 1
-        entry point — 17–22 minutes on foot — well above the 10-minute threshold at which
-        walking to transit becomes a barrier to car-free living. Bus lines 035 and 060
-        serve the Patission axial corridor but do not penetrate the interior grid; residents
-        on streets like Fokionos Negri have no direct bus to a metro station.
+        Athens's fixed-route network covers main arteries well. Where OASA is adequate,
+        AthensMoves should not operate — doing so wastes resources and risks
+        jurisdictional conflict with OASA under {{legal:law_3920}}. The genuine gap is
+        not "OASA is slow" in the abstract; it is the specific trips where driving is so
+        much faster than any public transit option that no reasonable person would choose
+        transit today. These are the trips AthensMoves is designed to capture.
 
-        Zone 2 (western Patissia) has a frequency gap: Line 1 stations are within
-        acceptable walking distance, but secondary bus routes serving cross-neighbourhood
-        trips run at 35–45 minute headways at night — intervals that make the bus
-        practically unusable for time-sensitive journeys and force car dependency even
-        where infrastructure exists.
+        Two types of gap are documented across the municipality. The first is a
+        **rail distance gap**: interior neighbourhoods where the nearest metro station
+        is a 15+ minute walk, such as the grid between Victoria and Pedion Areos stations
+        in central Kypseli (1,350–1,770m from Line 1). Bus lines 035 and 060 serve the
+        Patission axial corridor but do not penetrate these interior streets. The second
+        is a **frequency gap**: areas such as western Patissia where Line 1 stations are
+        within acceptable walking distance but secondary cross-neighbourhood bus routes
+        run at 35–45 minute headways at night, making the bus unusable for
+        time-sensitive trips and forcing car dependency even where infrastructure exists.
 
-        The municipality establishes a wholly-owned Municipal Development Company under
-        {{legal:law_4555}} {{ref:kleisthenis}}. Athens already operates DAEM S.A. under
-        the same legal framework {{ref:daem}} — this is a well-precedented path with no
-        novel legal obstacles.
-      notes:
-        - >
-          Academic research consistently shows on-demand transit performs worst in dense
-          urban areas already served by fixed-route networks {{ref:liezenga_2024}}.
-          The failure rate is high: 50% of demand-responsive services last fewer than
-          7 years, 40% fewer than 3 years {{ref:mulley_2020}}. This proposal addresses
-          the risk by targeting only genuinely underserved neighbourhoods, launching in a
-          single defined zone, and making scale-up conditional on hard ridership data.
+        In both cases, the underlying problem is the same: for a meaningful share of
+        trips in these areas, driving is dramatically faster than any available transit
+        option. AthensMoves targets exactly this condition — and only this condition.
 
-    action:
-      body: |
-        {{legal:law_3920}} gives OASA sweeping coordinating authority over all public
-        transport in Attica {{ref:law_3920}}. A municipality operating its own
-        fare-setting transport service in the metro-served core would almost certainly
-        trigger a jurisdictional dispute. AthensMoves sidesteps this entirely by
-        operating under a formal programmatic agreement with OASA — a well-established
-        legal instrument under Greek administrative law — in which OASA endorses the
-        service as a gap-filling complement to its own network. AthensMoves is positioned
-        exclusively as first/last-mile connectivity to metro stations in neighbourhoods
-        with poor fixed-route coverage, and does not operate in the metro-served core.
-        Fare integration uses the unified OASA contactless ticket (bank card or OASA
-        card) at the standard OASA fare — removing any risk of undercutting OASA's fare
-        base and making AthensMoves a political asset for OASA rather than a rival.
-
-        **Zone 1 pilot (central Kypseli) launches at month 12**, co-incident with Tranche 1
-        space conversions in the same streets. Service area: the interior grid bounded by
-        Patission (west), Alexandras (south), Kifissias (east), and Kypselis (north) —
-        the area where walking distance to Line 1 exceeds 15 minutes. Zone 2 (western
-        Patissia) launches at month 18 only if Zone 1 meets the ridership threshold,
-        addressing frequency rather than distance as its primary gap. Zone 3
-        (Pangrati/Kaisariani) is contingent on Zone 2 data.
+        **Legal basis.** The municipality establishes a wholly-owned Municipal Development
+        Company under {{legal:law_4555}} {{ref:kleisthenis}}. Athens already operates
+        DAEM S.A. under the same legal framework {{ref:daem}} — a well-precedented path
+        with no novel legal obstacles. {{legal:law_3920}} gives OASA sweeping coordinating
+        authority over all public transport in Attica {{ref:law_3920}}; AthensMoves
+        therefore operates under a formal programmatic agreement with OASA in which OASA
+        endorses the service as a gap-filling complement to its own network. Because the
+        car-speed filter ensures AthensMoves only activates where OASA is materially
+        slower than driving, the service does not undercut OASA's core routes by design.
+        The programmatic agreement must explicitly endorse the filter methodology — the
+        choice of routing API, the comparison logic, and the 50% threshold — so that OASA
+        cannot later dispute individual trip eligibility.
       legal:
         - id: law_4555
           citation: "Law 4555/2018, Articles 182–183"
@@ -372,18 +495,103 @@ measures:
           relevance: >
             OASA's coordinating authority over all public transport in Attica.
             Municipal service requires a programmatic agreement with OASA to
-            operate legally without jurisdictional conflict.
+            operate legally without jurisdictional conflict. The agreement must
+            explicitly endorse the car-speed filter methodology, including the
+            routing API, comparison logic, and 50% threshold.
+      case_studies:
+        - name: Jersey City Via Partnership
+          location: Jersey City, NJ, USA
+          period: "2018–ongoing"
+          type: positive
+          body: |
+            Jersey City launched an on-demand shared minibus service with Via, starting
+            with 17 vehicles and expanding to 26. By 2022 the service had carried 2 million
+            rides, with 90% of rides shared and an average of 4.2 trips per vehicle per
+            hour — above the viability threshold. Annual contract cost: $7.5 million
+            {{ref:jersey_city_via}}. The service targets underserved neighbourhoods with
+            limited fixed-route access — zones with genuine transit gaps and clear
+            first/last-mile framing. AthensMoves replicates these conditions by restricting
+            service to trips where driving is materially faster than OASA.
+          lesson: |
+            Viability follows from targeting genuine gaps, not from deploying broadly.
+            The 4.2 trips/vehicle/hour outcome validates the 3+ threshold used here.
+        - name: Helsinki Kutsuplus
+          location: Helsinki, Finland
+          period: "2012–2015"
+          type: cautionary
+          body: |
+            Helsinki launched Kutsuplus with 15 minibuses across a city already served by
+            excellent metro, tram, and bus networks. The service was cancelled after three
+            years because cost-per-trip was "unacceptable compared to passenger numbers"
+            {{ref:kutsuplus}}. Microtransit fails when deployed as a general urban service
+            competing with fixed routes.
+          lesson: |
+            AthensMoves avoids this failure mode by construction: the car-speed filter
+            ensures the service never activates on trips where OASA already performs
+            competitively against driving. The filter is the functional equivalent of the
+            geographic restriction that Kutsuplus lacked.
+      notes:
+        - >
+          Academic research consistently shows on-demand transit performs worst in dense
+          urban areas already served by fixed-route networks {{ref:liezenga_2024}}.
+          The failure rate is high: 50% of demand-responsive services last fewer than
+          7 years, 40% fewer than 3 years {{ref:mulley_2020}}. The car-speed filter
+          directly addresses this failure mode: AthensMoves only activates on trips
+          where driving is materially faster than all available alternatives, targeting
+          genuine gaps rather than competing with well-served routes.
+        - >
+          The car-speed filter introduces a dependency on a third-party routing API for
+          real-time traffic and transit journey times (e.g. Google Maps Directions API,
+          Citymapper API, or equivalent). If the API is unavailable, the filter cannot
+          execute and bookings must either be blocked or fall back to a pre-computed
+          static schedule. This dependency must be addressed in procurement: the chosen
+          provider must offer an SLA appropriate for a public service, and a fallback
+          mode must be implemented before launch.
+
+    action:
+      body: |
+        **How the car-speed filter works.** When a passenger requests a ride, the app
+        simultaneously queries a routing API (e.g. Google Maps, Citymapper) for two
+        journey times for the same origin and destination: (1) driving by car, accounting
+        for real-time traffic, and (2) the best available OASA route. If the car journey
+        is 50% or more faster than the best OASA option, AthensMoves checks whether it
+        can serve the trip operationally — i.e. whether a vehicle is available within
+        a reasonable dispatch time. If yes, the ride is offered. If no vehicle is
+        available, or if the car advantage is below 50%, the app displays the best
+        available OASA route instead, with journey times and a deep link to the OASA
+        ticket. Fare integration uses the unified OASA contactless ticket at the standard
+        OASA fare, making AthensMoves a political asset for OASA rather than a rival.
+
+        **Operations.** City-wide service launches at month 12, co-incident with Tranche 1
+        space conversions. There is no hard geographic boundary on launch — the service is
+        available across the entire municipality from day one, and activates wherever the
+        filter is satisfied. Fleet utilisation will naturally concentrate in areas where
+        the car advantage is most pronounced; operational data from months 12–18 will
+        reveal these patterns and inform targeted infrastructure investment in subsequent
+        tranches. Scale-up from 8 to 15 vehicles at month 18 is conditional on meeting
+        the 3+ passengers/vehicle/hour threshold. If the threshold is not met, the causes
+        are reviewed — low demand, filter too strict, API accuracy issues — before any
+        expansion is approved.
+      images:
+        - src: /ride-athens-mockup.png
+          caption: "Mockup: AthensMoves only offers rides where OASA is significantly slower than a direct car ride"
       params:
         - key: Fleet (Year 1)
           value: 8 electric minibuses
         - key: Vehicle type
           value: Karsan e-JEST or equiv.
-        - key: Zone 1 (launch)
-          value: "Central Kypseli interior grid — Month 12 (rail distance gap: 15–22 min walk to Line 1)"
-        - key: Zone 2 (conditional)
-          value: "Western Patissia — Month 18 if threshold met (frequency gap: 35–45 min night bus headways)"
-        - key: Zone 3 (conditional)
-          value: Pangrati/Kaisariani — contingent on Zone 2 data
+        - key: Service area
+          value: City-wide (entire Municipality of Athens)
+        - key: Eligibility filter
+          value: >
+            Ride offered only if (a) driving by car is ≥50% faster than the best
+            available OASA route (real-time, via routing API), AND (b) a vehicle
+            is operationally available. If either condition fails, the app displays
+            the best OASA route instead.
+        - key: Routing API
+          value: "Real-time traffic + transit routing API (e.g. Google Maps Directions API, Citymapper API) — enterprise SLA required"
+        - key: Launch
+          value: Month 12 — city-wide from day one
         - key: Hours
           value: "07:00 – 23:00 daily"
         - key: Fare
@@ -393,40 +601,7 @@ measures:
         - key: Scale-up threshold
           value: 3+ passengers / vehicle / hour
         - key: "Year 2 (conditional)"
-          value: 15 vehicles, Zone 2 + possible Zone 3
-
-    case_studies:
-      - name: Jersey City Via Partnership
-        location: Jersey City, NJ, USA
-        period: "2018–ongoing"
-        type: positive
-        body: |
-          Jersey City launched an on-demand shared minibus service with Via, starting
-          with 17 vehicles and expanding to 26. By 2022 the service had carried 2 million
-          rides, with 90% of rides shared and an average of 4.2 trips per vehicle per
-          hour — above the viability threshold. Annual contract cost: $7.5 million
-          {{ref:jersey_city_via}}. The service targets underserved neighbourhoods with
-          limited fixed-route access — low-density zones with genuine transit gaps and
-          clear first/last-mile framing. AthensMoves replicates these conditions by
-          restricting service to non-metro-served neighbourhoods.
-        lesson: |
-          Viability follows from targeting genuine gaps, not from deploying broadly.
-          The 4.2 trips/vehicle/hour outcome validates the 3+ threshold used here.
-
-      - name: Helsinki Kutsuplus
-        location: Helsinki, Finland
-        period: "2012–2015"
-        type: cautionary
-        body: |
-          Helsinki launched Kutsuplus with 15 minibuses across a city already served by
-          excellent metro, tram, and bus networks. The service was cancelled after three
-          years because cost-per-trip was "unacceptable compared to passenger numbers"
-          {{ref:kutsuplus}}. Microtransit fails when deployed as a general urban service
-          competing with fixed routes.
-        lesson: |
-          AthensMoves avoids this failure mode by operating only where OASA does not,
-          launching in a single zone, and setting an explicit ridership threshold before
-          any scale-up is approved.
+          value: 15 vehicles if threshold met at month 18
 
     budget:
       items:
@@ -446,13 +621,22 @@ measures:
           type: one_time
           low: 150000
           high: 250000
+        - id: api_integration
+          label: >
+            Routing API integration — car-speed filter logic, real-time traffic +
+            transit comparison, OASA fallback display, fallback static schedule mode
+          type: one_time
+          low: 30000
+          high: 80000
         - id: company_formation
           label: Company formation + legal + procurement costs
           type: one_time
           low: 100000
           high: 150000
         - id: operations
-          label: "Annual operations — 16 drivers, 4 admin/IT, maintenance (incl. employer social contributions ~25%, OT provision)"
+          label: >
+            Annual operations — 16 drivers, 4 admin/IT, maintenance
+            (incl. employer social contributions ~25%, OT provision)
           type: annual
           low: 850000
           high: 1100000
@@ -461,24 +645,31 @@ measures:
           type: annual
           low: 80000
           high: 150000
+        - id: api_annual
+          label: >
+            Annual routing API fees — real-time traffic + transit queries at
+            city-wide volume (volume-dependent; budget at upper end until
+            month 18 utilisation data available)
+          type: annual
+          low: 20000
+          high: 60000
         - id: oasa_revenue
-          label: "Less — OASA fare revenue share (est.; treat as €0 in Year 1 pending agreement terms)"
+          label: "Less — OASA fare revenue share (treat as €0 in Year 1 pending agreement terms)"
           type: annual_credit
           low: -120000
           high: 0
       notes:
         - >
-          Operations cost corrected from earlier draft to include employer social
-          contributions (~25% on top of gross salary) and an overtime provision.
-          Transit drivers commonly earn 20–30% above base in overtime; excluding this
-          produces a structurally underfunded opex line.
+          API integration covers filter logic, real-time comparison, OASA fallback
+          display, and static fallback mode. Does not cover ongoing API query fees,
+          budgeted separately as an annual line.
         - >
-          Platform SaaS fees (previously omitted) are a fixed annual cost regardless
-          of ridership. They must be budgeted from Year 1, not deferred to scale-up.
+          Operations cost includes employer social contributions (~25%) and an overtime
+          provision. Transit drivers commonly earn 20–30% above base in overtime;
+          excluding this produces a structurally underfunded opex line.
         - >
-          OASA revenue share is modelled as €0 in Year 1 — the revenue-sharing terms
-          will not be finalised before service launch and should not be relied upon for
-          budget closure. Upside only from Year 2 if terms are agreed.
+          Platform SaaS fees are a fixed annual cost regardless of ridership and must
+          be budgeted from Year 1, not deferred to scale-up.
         - >
           Applications submitted in parallel for ERDF EV fleet co-financing (up to 85%)
           and EUI Innovative Actions (up to 80%). Given Greece's documented absorption
@@ -486,12 +677,85 @@ measures:
           reimbursement lag 2–4 years — EU grants are modelled as retrospective
           reimbursement only. The service operates on municipal budget from day one.
 
+    kpis:
+      - id: rides_per_vehicle_hour
+        label: Rides per vehicle per hour
+        type: outcome
+        unit: rides/vehicle/hour
+        baseline: 0 (pre-launch)
+        target: "≥3.0 by month 15 (scale-up threshold) · ≥4.0 by month 24"
+        frequency: monthly
+        source: AthensMoves platform data
+        note: >
+          Primary scale-up gate. Below 3.0 at month 15, fleet does not expand.
+          The Jersey City Via benchmark of 4.2 is the long-run target.
+
+      - id: filter_activation_rate
+        label: Car-speed filter activation rate (share of booking attempts where ride is offered)
+        type: operational
+        unit: percentage of booking attempts
+        baseline: 0 (pre-launch)
+        target: "Establish baseline in months 12–15; use to calibrate filter threshold"
+        frequency: monthly
+        source: AthensMoves platform data
+        note: >
+          A rate that is persistently very low (<10%) suggests the 50% threshold
+          is too strict or demand in qualifying corridors is lower than expected.
+          A rate that is very high (>70%) may indicate the filter is not effectively
+          targeting the worst car-vs-transit gaps. Both extremes warrant review.
+          This KPI has no fixed target at launch — it is a calibration instrument.
+
+      - id: oasa_referral_rate
+        label: Share of booking attempts resolved by OASA referral
+        type: operational
+        unit: percentage of booking attempts
+        baseline: 0 (pre-launch)
+        target: "Track from launch; no fixed target"
+        frequency: monthly
+        source: AthensMoves platform data
+        note: >
+          Measures how often the app successfully redirects users to OASA rather
+          than leaving them without guidance. A high referral rate is a positive
+          signal — it means the app is functioning as a full mobility tool, not just
+          an AthensMoves booking interface.
+
+      - id: cost_per_ride
+        label: Cost per ride (gross, pre-revenue)
+        type: financial
+        unit: EUR/ride
+        baseline: 0 (pre-launch)
+        target: "<€4.00 by month 18; <€3.00 by month 24 as fleet utilisation improves"
+        frequency: monthly
+        source: AthensMoves finance / platform data
+
+      - id: active_users
+        label: Registered active users (≥1 ride in past 30 days)
+        type: operational
+        unit: users
+        baseline: 0
+        target: "≥500 by month 15 · ≥1,500 by month 24"
+        frequency: monthly
+        source: AthensMoves platform data
+
+      - id: car_trip_substitution
+        label: "Self-reported car trip substitution rate (quarterly user survey)"
+        type: proxy
+        unit: percentage of rides
+        baseline: n/a
+        target: "≥40% of rides replacing a car trip by month 18"
+        frequency: quarterly
+        source: AthensMoves in-app survey (short, post-ride)
+        note: >
+          Cheap proxy for modal shift. If substitution rate is low, the service is
+          attracting walkers and existing transit users rather than car drivers —
+          the programme's core goal is not being met. Low substitution combined with
+          high filter activation rate suggests the filter threshold may need tightening.
+
 
 cross_cutting_costs:
   note: >
-    These costs apply to the programme as a whole and were absent from the original
-    per-measure budgets. They are not optional — omitting them is how municipal
-    programmes quietly fail.
+    These costs apply to the programme as a whole. They are not optional — omitting
+    them is how municipal programmes quietly fail.
   items:
     - id: programme_management
       label: "Programme director + project officer (dedicated, full-time, 30-month programme)"
@@ -499,20 +763,24 @@ cross_cutting_costs:
       low: 120000
       high: 180000
       note: >
-        Someone must coordinate three measures across municipal police, Municipal Council,
-        and AthensMoves Ltd., manage the MoU negotiation, oversee the OASA agreement, and
-        run procurement. Without dedicated capacity this role defaults to an existing
-        official doing it part-time, which is how timelines slip by years.
+        Someone must coordinate three measures across municipal police, Municipal
+        Council, and AthensMoves Ltd., manage the MoU negotiation, oversee the OASA
+        agreement, and run procurement. Without dedicated capacity this role defaults
+        to an existing official doing it part-time, which is how timelines slip by years.
     - id: legal
-      label: External legal counsel (towing authority position + MoU + company formation + contingency litigation)
+      label: >
+        External legal counsel — towing authority position, MoU drafting, company
+        formation, OASA programmatic agreement (including car-speed filter methodology
+        clause), contingency litigation
       type: one_time
       low: 80000
       high: 200000
       note: >
         The towing authority question requires a formal legal opinion before operations
-        begin. MoU drafting and the OASA programmatic agreement both require specialist
-        administrative law counsel. If challenged in court, litigation costs are additional
-        and unbounded — €80–200k covers the pre-litigation legal work only.
+        begin. The OASA agreement requires specialist administrative law counsel and
+        must include a technically specific filter methodology clause. If challenged in
+        court, litigation costs are additional and unbounded — €80–200k covers
+        pre-litigation legal work only.
     - id: communications
       label: Public consultation + communications (3 tranches × 7 districts, 30 months)
       type: one_time
@@ -525,25 +793,54 @@ cross_cutting_costs:
         be done on zero budget. This is the most likely item to be cut and the most
         likely cause of political failure if it is.
 
+
 summary:
   setup:
     label: Total one-time capital (enforcement + conversion + AthensMoves + cross-cutting)
-    low: 5300000
-    high: 7300000
+    low: 5250000
+    high: 7605000
+    breakdown:
+      enforcement_one_time:
+        label: Enforcement (tow trucks)
+        low: 800000
+        high: 1200000
+      conversion_one_time:
+        label: Space conversion (parklets + e-bike + signage + traffic studies)
+        low: 1660000
+        high: 2575000
+      athensmoves_one_time:
+        label: AthensMoves (fleet + depot + platform + API integration + company formation)
+        low: 2630000
+        high: 3480000
+      cross_cutting_one_time:
+        label: Cross-cutting (legal + communications)
+        low: 160000
+        high: 350000
     note: >
-      Previous estimate was €3.25–4.35M. The increase reflects: corrected AthensMoves
-      depot/charging (€350–600k vs €200–300k), traffic studies (€60–75k, previously
-      omitted), legal costs (€80–200k, previously omitted), and communications
-      (€80–150k, previously omitted).
+      Includes enforcement infrastructure, space conversion, AthensMoves fleet and
+      depot, API integration, traffic studies, legal costs, and communications.
   annual:
     label: Total annual operating cost
-    low: 1530000
-    high: 2330000
+    low: 1500000
+    high: 2390000
+    breakdown:
+      enforcement_annual:
+        label: Enforcement (officers + impound)
+        low: 550000
+        high: 900000
+      athensmoves_annual:
+        label: "AthensMoves (operations + SaaS + API fees, net of OASA revenue share at low)"
+        low: 830000
+        high: 1310000
+      cross_cutting_annual:
+        label: Programme management
+        low: 120000
+        high: 180000
     note: >
-      Previous estimate was €980k–1.29M/year. The increase reflects: corrected AthensMoves
-      opex with social contributions and OT (€850k–1.1M vs €700–850k), SaaS platform fees
-      (€80–150k, previously omitted), programme management (€120–180k, previously omitted),
-      and impound facility contingency (€0–400k depending on MoU outcome).
+      Includes AthensMoves opex with social contributions and OT, SaaS platform fees,
+      routing API fees, programme management, and impound facility lease.
+      AthensMoves annual low reflects €120k OASA revenue credit applied; high reflects
+      €0 credit (Year 1 assumption held conservatively through programme life).
   eu_grants:
     label: Potential EU co-financing (ERDF + EUI — retrospective reimbursement only)
     low: 0
@@ -553,34 +850,36 @@ summary:
       ~20% effective absorption rate and 2–4 year reimbursement lag, the programme must
       be fully funded from municipal budget. Any grant received reduces net capital outlay.
 
+
 timeline:
   - month: 2
-    milestone: Enforcement cooperation protocol agreed with the Traffic Police; MoU negotiations opened
+    milestone: Enforcement cooperation protocol agreed with Traffic Police; MoU negotiations opened; routing API provider selection begins
   - month: 3
     milestone: Municipal legal position on towing authority formalised; MoU with Hellenic Traffic Police signed
   - month: 4
-    milestone: Tow trucks operational; enforcement teams deployed across all 7 districts
+    milestone: Tow trucks operational; enforcement teams deployed across all 7 districts; five fine pipeline interventions implemented (gov.gr notification, electronic seizure, certification unit, AADE transmission, Traffic Police handover protocol)
   - month: 6
-    milestone: AthensMoves Ltd. formally incorporated; EU grant applications submitted
+    milestone: AthensMoves Ltd. formally incorporated; EU grant applications submitted; routing API contract signed
   - month: 8
-    milestone: Tranche 1 traffic studies completed for central Kypseli sites; resident consultation begins
+    milestone: Tranche 1 traffic studies completed for central Kypseli sites; resident consultation begins; car-speed filter development complete and tested
   - month: 9
-    milestone: OASA programmatic agreement signed; Tranche 1 space conversions begin (150 spaces, central Kypseli interior grid)
+    milestone: OASA programmatic agreement signed (including car-speed filter methodology clause and 50% threshold); Tranche 1 space conversions begin (150 spaces, central Kypseli)
   - month: 12
-    milestone: Tranche 1 conversions complete; AthensMoves Zone 1 pilot launches in central Kypseli; 8-vehicle fleet operational
+    milestone: Tranche 1 conversions complete; AthensMoves launches city-wide with 8-vehicle fleet and car-speed filter active
   - month: 15
-    milestone: Zone 1 ridership data reviewed against 3+ passengers/vehicle/hour threshold; Tranche 2 traffic studies begin (western Patissia + Pangrati/Kaisariani)
+    milestone: Fleet utilisation and filter satisfaction rate reviewed; high-demand corridors identified; Tranche 2 traffic studies begin (western Patissia + Pangrati/Kaisariani)
   - month: 18
     milestone: >
-      Scale-up decision point — if threshold met, Zone 2 (western Patissia, frequency gap)
-      launches; Tranche 2 space conversions begin (200 spaces).
-      If threshold not met, Zone 1 continues; causes reviewed before expansion.
+      Scale-up decision point — if 3+ passengers/vehicle/hour threshold met, fleet
+      expands to 15 vehicles; Tranche 2 space conversions begin (200 spaces).
+      If threshold not met, causes reviewed (demand, filter calibration, API accuracy)
+      before any expansion approved.
   - month: 24
-    milestone: Tranche 2 conversions complete; Zone 2 ridership reviewed; Tranche 3 traffic studies begin (150 spaces, citywide priority streets)
+    milestone: Tranche 2 conversions complete; fleet utilisation reviewed; Tranche 3 traffic studies begin (150 spaces, citywide priority streets)
   - month: 27
-    milestone: Zone 3 (Pangrati/Kaisariani) launches if Zone 2 data warrants; Tranche 3 conversions begin
+    milestone: Tranche 3 conversions begin; API contract renewal decision
   - month: 30
-    milestone: Tranche 3 complete; 500-space programme fully delivered; full programme evaluation
+    milestone: Tranche 3 complete; 500-space programme fully delivered; full programme evaluation including car-speed filter calibration review
 
 
 kpis:
@@ -588,194 +887,31 @@ kpis:
   note: >
     KPIs are published publicly on a quarterly basis. Public reporting is the primary
     institutionalisation mechanism — it makes defunding politically costly by forcing
-    an explanation for why the numbers stopped moving.
-
-  measures:
-
-    - measure_id: enforcement
-      title: Parking Enforcement
-      indicators:
-        - id: tows_per_week
-          label: Tows per week
-          type: operational
-          unit: vehicles/week
-          baseline: "~0 (no independent municipal towing currently)"
-          target: "≥70/week by month 6; ≥175/week by month 12"
-          frequency: monthly
-          source: Municipal police operations log
-
-        - id: fine_notices_issued
-          label: Fine notices issued
-          type: operational
-          unit: notices/month
-          baseline: To be established via municipal survey (month 1)
-          target: "≥5,000/month by month 6 across 7 districts"
-          frequency: monthly
-          source: Municipal police operations log
-
-        - id: fine_collection_rate
-          label: Fine collection rate
-          type: outcome
-          unit: percentage
-          baseline: "8% ({{ref:athens_voice_2022}})"
-          target: "≥25% by month 12; ≥40% by month 24"
-          frequency: quarterly
-          source: Municipal finance department
-          note: >
-            This is the single most important enforcement KPI. The 8% baseline is a
-            political equilibrium, not a technical limit. Movement on this number is
-            the clearest signal that deterrence is working.
-
-        - id: pavement_obstruction_complaints
-          label: Pavement obstruction complaints (311 / municipal complaints system)
-          type: proxy
-          unit: complaints/month
-          baseline: To be established from existing complaints data
-          target: "≥30% reduction from baseline by month 18"
-          frequency: quarterly
-          source: Municipal complaints system
-          note: >
-            Proxy for illegal parking volume. Cheaper than a full street survey and
-            politically legible — complaint reduction is a story the mayor can tell.
-
-    - measure_id: space_conversion
-      label: Space Conversion
-      indicators:
-        - id: spaces_converted
-          label: Spaces converted (cumulative)
-          type: operational
-          unit: spaces
-          baseline: 0
-          target: "150 by month 12 · 350 by month 24 · 500 by month 30"
-          frequency: monthly
-          source: Programme management office
-
-        - id: green_area_delivered
-          label: Green/pedestrian area delivered (cumulative)
-          type: outcome
-          unit: m²
-          baseline: 0
-          target: "~750 m² by month 12 · ~2,000 m² by month 30"
-          frequency: quarterly
-          source: Programme management office
-
-        - id: ebike_docks_operational
-          label: E-bike docking points operational (cumulative)
-          type: operational
-          unit: docking points
-          baseline: 0
-          target: "~360 by month 12 · ~1,200 by month 30"
-          frequency: quarterly
-          source: Operator data (if licensed) or municipal infrastructure log
-
-        - id: bikes_stored
-          label: Bikes stored / docked at peak hour
-          type: outcome
-          unit: bikes
-          baseline: 0
-          target: ">60% dock occupancy at peak by month 18"
-          frequency: monthly
-          source: Operator data
-          note: >
-            Dock occupancy is a better signal than dock count — empty docks mean the
-            infrastructure exists but isn't being used. Peak-hour occupancy above 60%
-            indicates genuine demand.
-
-        - id: parkinathens_utilisation
-          label: PARKinATHENS controlled space utilisation rate in converted zones
-          type: proxy
-          unit: percentage occupancy
-          baseline: To be established from PARKinATHENS sensor data
-          target: "No increase in utilisation in adjacent streets (displacement check)"
-          frequency: quarterly
-          source: PARKinATHENS operator data
-          note: >
-            Proxy for modal shift and displacement effect. If removed spaces cause
-            adjacent controlled spaces to fill up, drivers are circling rather than
-            switching modes — the conversion is displacing parking, not reducing it.
-            Flat or falling utilisation in adjacent streets is the signal that
-            behaviour is actually changing.
-
-    - measure_id: athensmoves
-      label: AthensMoves
-      indicators:
-        - id: rides_per_vehicle_hour
-          label: Rides per vehicle per hour
-          type: outcome
-          unit: rides/vehicle/hour
-          baseline: 0 (pre-launch)
-          target: "≥3.0 by month 15 (scale-up threshold) · ≥4.0 by month 24"
-          frequency: monthly
-          source: AthensMoves platform data
-          note: >
-            This is the primary scale-up gate. Below 3.0 at month 15, Zone 2 does
-            not launch. The Jersey City Via benchmark of 4.2 is the long-run target.
-
-        - id: cost_per_ride
-          label: Cost per ride (gross, pre-revenue)
-          type: financial
-          unit: EUR/ride
-          baseline: 0 (pre-launch)
-          target: "<€4.00 by month 18; <€3.00 by month 24 as fleet utilisation improves"
-          frequency: monthly
-          source: AthensMoves finance / platform data
-
-        - id: active_users
-          label: Registered active users (≥1 ride in past 30 days)
-          type: operational
-          unit: users
-          baseline: 0
-          target: "≥500 by month 15 · ≥1,500 by month 24"
-          frequency: monthly
-          source: AthensMoves platform data
-
-        - id: zone_coverage
-          label: Zones operational
-          type: operational
-          unit: zones
-          baseline: 0
-          target: "1 by month 12 · 2 by month 18 (conditional) · 3 by month 27 (conditional)"
-          frequency: quarterly
-          source: Programme management office
-
-        - id: car_trip_substitution
-          label: "Self-reported car trip substitution rate (quarterly user survey)"
-          type: proxy
-          unit: percentage of rides
-          baseline: n/a
-          target: "≥40% of rides replacing a car trip by month 18"
-          frequency: quarterly
-          source: AthensMoves in-app survey (short, post-ride)
-          note: >
-            Cheap proxy for modal shift. Not academically rigorous but politically
-            legible and operationally actionable. If substitution rate is low, the
-            service is attracting walkers and existing transit users, not car drivers —
-            the programme's core goal is not being met.
-
+    an explanation for why the numbers stopped moving. Per-measure KPIs are defined
+    within each measure above; the indicators below apply across the programme as a whole.
   programme_wide:
-    indicators:
-      - id: car_registrations_target_zones
-        label: New car registrations in target neighbourhoods (Kypseli, Patissia, Pangrati)
-        type: proxy
-        unit: registrations/quarter
-        baseline: From AADE vehicle registry at programme start
-        target: "Flat or declining trend vs. Athens-wide trend by month 24"
-        frequency: annual
-        source: AADE (Independent Authority for Public Revenue) vehicle registry
-        note: >
-          Slow-moving but robust proxy for car dependency. A divergence between
-          target neighbourhoods and the Athens average is a meaningful signal.
-          Annual cadence is sufficient — this is a trend indicator, not an
-          operational one.
+    - id: car_registrations_target_zones
+      label: New car registrations in target neighbourhoods (Kypseli, Patissia, Pangrati)
+      type: proxy
+      unit: registrations/quarter
+      baseline: From AADE vehicle registry at programme start
+      target: "Flat or declining trend vs. Athens-wide trend by month 24"
+      frequency: annual
+      source: AADE (Independent Authority for Public Revenue) vehicle registry
+      note: >
+        Slow-moving but robust proxy for car dependency. A divergence between
+        target neighbourhoods and the Athens average is a meaningful signal.
+        Annual cadence is sufficient — this is a trend indicator, not an
+        operational one.
 
-      - id: programme_spend_vs_budget
-        label: Programme spend vs. approved budget (cumulative)
-        type: financial
-        unit: EUR
-        baseline: 0
-        target: "Within 15% of approved budget at each quarterly review"
-        frequency: quarterly
-        source: Programme management office / municipal finance
+    - id: programme_spend_vs_budget
+      label: Programme spend vs. approved budget (cumulative)
+      type: financial
+      unit: EUR
+      baseline: 0
+      target: "Within 15% of approved budget at each quarterly review"
+      frequency: quarterly
+      source: Programme management office / municipal finance
 
 
 references:
@@ -796,7 +932,7 @@ references:
     title: Where Do Parking Fines Go When We Don't Pay Them?
     author: Athens Voice
     year: 2022
-    detail: "€143.7M outstanding fines, ~8% collection rate — via Deputy Mayor Koromantzos"
+    detail: "€143.7M outstanding fines, ~8% collection rate — via Deputy Mayor Koromantzos; total certified debt €143.7M vs €60.1M blocked at AADE (68,412 ΑΦΜs)"
 
   - id: oslo_fastcompany
     title: How Oslo Became a City Without Parking
@@ -880,3 +1016,63 @@ references:
       tow trucks. No municipality has ever exercised independent towing authority.
       No NSK opinion, court ruling, or ministry circular has directly adjudicated the
       question. Operational authority exists in statute but is entirely untested.
+
+  - id: law_542_1977
+    title: "Law 542/1977, Article 71 — Fiscal Certification Deadline"
+    author: Hellenic Parliament
+    year: 1977
+    detail: >
+      Parking fines must be fiscally certified (ταμειακή βεβαίωση) within 3 years of
+      the end of the violation year or they are legally extinguished. This is the
+      binding constraint on the entire fine collection pipeline.
+
+  - id: deputy_mayor_2025
+    title: Statement by Athens Deputy Mayor on Parking Fine Collection
+    author: Athens Deputy Mayor (Koromantzos)
+    year: 2025
+    month: October
+    detail: >
+      Confirmed that Hellenic Traffic Police take approximately 1.5 years to hand
+      violation records to the municipal Revenue Certification Department, consuming
+      half the 3-year certification window before municipal processing begins.
+
+  - id: moi_circular_2023
+    title: "Ministry of Interior Circular 534/38880/2023 and Clarification Letter 17729/23.02.2024"
+    author: Ministry of Interior
+    year: 2023
+    detail: >
+      Confirmed that fiscal certifications issued after the 3-year statutory deadline
+      (Art. 71, N.542/1977) are unlawful. Transitional provisions under N.5027/2023
+      Art. 72 gave municipalities until March 2, 2025 to pursue pre-2019 debts. A
+      significant portion of the €143.7M backlog is likely legally uncollectable as
+      a result.
+
+  - id: law_5142_2024
+    title: "Law 5142/2024 — Electronic Notification via gov.gr"
+    author: Hellenic Parliament
+    year: 2024
+    detail: >
+      Amends Law 4727/2020 to make electronic notification via gov.gr operational for
+      municipal fines from July 16, 2025. Service deemed legally complete 10 working
+      days after document upload. Eliminates reliance on postal address verification —
+      the primary cause of notification failure and prescription.
+
+  - id: law_5143_2024
+    title: "Law 5143/2024, Article 32 and JMD 77123/2024 — Electronic Bank Account Seizure"
+    author: Hellenic Parliament / Ministry of Finance
+    year: 2024
+    detail: >
+      Enables municipalities to submit bank account seizure orders digitally via the
+      OTA Node from October 2024, without AADE intermediation. Removes the previous
+      bottleneck in enforcement against certified but unpaid debts.
+
+  - id: kya_45081_1997
+    title: "KYA 45081/1997 — Minimum Threshold for AADE Transmission"
+    author: Ministry of Finance
+    year: 1997
+    detail: >
+      Sets the minimum certified debt at €293.47 for transmission to AADE for
+      enforcement action (tax clearance denial, bank seizure). Debts below this
+      threshold cannot be referred to AADE. As of September 2022, 68,412 ΑΦΜs
+      were blocked for €60.1M — well below the €143.7M total certified, indicating
+      large volumes are not being referred.

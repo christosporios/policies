@@ -5,13 +5,11 @@ import { Icon } from './icon';
 import { Note } from './note';
 import { AccordionBody } from './accordion-body';
 
-const SummaryBand = ({ label, low, high, note, suffix, mobile }) => (
-  <div style={{ background: C.ink, color: '#f7f6f4', padding: '20px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, marginBottom: 16 }}>
-    <div>
-      <span style={{ fontFamily: C.mono, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(247,246,244,0.45)', display: 'block', marginBottom: 4 }}>{label}</span>
-      <span style={{ fontFamily: C.serif, fontSize: 22, fontWeight: 600 }}>{fmtRange(low, high)}{suffix || ''}</span>
-    </div>
-    {note && <div style={{ fontSize: 12, color: 'rgba(247,246,244,0.45)', maxWidth: 300, textAlign: mobile ? 'left' : 'right', lineHeight: 1.55 }}>{note.trim ? note.trim() : note}</div>}
+const SummaryBand = ({ label, low, high, note, suffix }) => (
+  <div style={{ background: C.ink, color: '#f7f6f4', padding: '20px 24px', marginBottom: 16 }}>
+    <span style={{ fontFamily: C.mono, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(247,246,244,0.45)', display: 'block', marginBottom: 4 }}>{label}</span>
+    <span style={{ fontFamily: C.serif, fontSize: 22, fontWeight: 600 }}>{fmtRange(low, high)}{suffix || ''}</span>
+    {note && <div style={{ fontSize: 12, color: 'rgba(247,246,244,0.45)', lineHeight: 1.55, marginTop: 10 }}>{note.trim ? note.trim() : note}</div>}
   </div>
 );
 
@@ -60,7 +58,7 @@ export const SummarySection = ({ policy, isOpen, onToggle, mobile }) => {
       <button onClick={onToggle} aria-expanded={isOpen} style={{ cursor: 'pointer', userSelect: 'none', background: 'none', border: 'none', width: '100%', textAlign: 'left', padding: 0, font: 'inherit', color: 'inherit' }}>
         <div style={{ maxWidth: 860, margin: '0 auto', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, padding: mobile ? '20px 20px' : '24px 40px' }}>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: mobile ? 12 : 20, flex: 1 }}>
-            {!mobile && <span style={{ fontFamily: C.mono, fontSize: 11, letterSpacing: '0.15em', color: C.faint, paddingTop: 4, minWidth: 28 }}>—</span>}
+            {!mobile && <span style={{ color: C.faint, paddingTop: 7, minWidth: 28, display: 'flex' }}><Icon name="coins" size={16} /></span>}
             <div>
               <div style={{ fontFamily: C.serif, fontSize: mobile ? 18 : 22, fontWeight: 600, color: C.ink }}>Costs, Timeline & Assumptions</div>
               <div style={{ fontFamily: C.mono, fontSize: 11.5, color: C.faint, marginTop: 3, letterSpacing: '0.04em' }}>Combined budget · Implementation schedule</div>
@@ -117,16 +115,37 @@ export const SummarySection = ({ policy, isOpen, onToggle, mobile }) => {
 
           {/* Timeline */}
           <div style={{ marginTop: 24 }}>
-            <div style={{ fontFamily: C.mono, fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.faint, marginBottom: 14, paddingBottom: 6, borderBottom: `1px solid ${C.rule}` }}>
+            <div style={{ fontFamily: C.mono, fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.faint, marginBottom: 20, paddingBottom: 6, borderBottom: `1px solid ${C.rule}` }}>
               Timeline
             </div>
-            {policy.timeline.map((t, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 16, padding: '10px 0', borderBottom: i < policy.timeline.length - 1 ? `1px solid ${C.rule}` : 'none' }}>
-                <span style={{ fontFamily: C.mono, fontSize: 10, letterSpacing: '0.1em', color: C.faint, minWidth: 52, paddingTop: 2 }}>Month {t.month}</span>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: C.ink, flexShrink: 0, marginTop: 7 }} />
-                <span style={{ fontSize: 13.5, color: C.mid, lineHeight: 1.5 }}>{typeof t.milestone === 'string' ? t.milestone : t.milestone?.trim?.() || ''}</span>
-              </div>
-            ))}
+            <div style={{ display: 'grid', gridTemplateColumns: mobile ? '36px 9px 1fr' : '52px 9px 1fr', columnGap: mobile ? 12 : 16, position: 'relative' }}>
+              {/* Vertical line through the dot column */}
+              <div style={{ position: 'absolute', left: mobile ? `calc(36px + 12px + 4px)` : `calc(52px + 16px + 4px)`, top: 4, bottom: 4, width: 1, background: C.rule }} />
+              {policy.timeline.map((t, i) => {
+                const isFirst = i === 0;
+                const isLast = i === policy.timeline.length - 1;
+                const dotSize = isFirst || isLast ? 9 : 7;
+                return (
+                  <div key={i} style={{ display: 'contents' }}>
+                    {/* Month label */}
+                    <span style={{ fontFamily: C.mono, fontSize: 10, letterSpacing: '0.06em', color: isFirst ? C.ink : C.faint, textAlign: 'right', paddingTop: 2 }}>
+                      {t.month} mo
+                    </span>
+                    {/* Dot */}
+                    <span style={{
+                      width: dotSize, height: dotSize, borderRadius: '50%',
+                      background: isFirst ? C.ink : isLast ? C.mid : C.bg,
+                      border: isFirst || isLast ? 'none' : `1.5px solid ${C.mid}`,
+                      alignSelf: 'start', justifySelf: 'center', marginTop: 5, position: 'relative', zIndex: 1,
+                    }} />
+                    {/* Milestone text */}
+                    <span style={{ fontSize: 13.5, color: isFirst ? C.ink : C.mid, lineHeight: 1.55, fontWeight: isFirst ? 500 : 400, paddingBottom: isLast ? 0 : 24 }}>
+                      {typeof t.milestone === 'string' ? t.milestone : t.milestone?.trim?.() || ''}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </AccordionBody>

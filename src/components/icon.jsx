@@ -7,6 +7,9 @@ export const Icon = ({ name, size = 24, style = {} }) => {
     bicycle:<svg {...props}><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>,
     plus:   <svg {...props}><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>,
     minus:  <svg {...props}><line x1="5" y1="12" x2="19" y2="12"/></svg>,
+    coins:  <svg {...props}><circle cx="9" cy="12" r="6"/><path d="M15 6a6 6 0 0 1 0 12"/><path d="M9 9v2h2"/><path d="M7 13h4"/></svg>,
+    gauge:  <svg {...props}><path d="M12 20a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/><path d="M12 12l3-3"/><circle cx="12" cy="12" r="1"/></svg>,
+    book:   <svg {...props}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>,
   };
   return icons[name] || null;
 };

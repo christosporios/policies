@@ -78,13 +78,13 @@ const MeasureKpiBlock = ({ block, mobile, ctx }) => (
   </div>
 );
 
-export const KpiSection = ({ kpis, isOpen, onToggle, mobile, ctx }) => (
+export const KpiSection = ({ kpis, measures, isOpen, onToggle, mobile, ctx }) => (
   <div data-section="kpis" style={{ background: isOpen ? C.hover : 'transparent', transition: 'background 0.2s' }}>
     <div style={{ borderTop: `1px solid ${C.rule}` }} />
     <button onClick={onToggle} aria-expanded={isOpen} style={{ cursor: 'pointer', userSelect: 'none', background: 'none', border: 'none', width: '100%', textAlign: 'left', padding: 0, font: 'inherit', color: 'inherit' }}>
       <div style={{ maxWidth: 860, margin: '0 auto', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, padding: mobile ? '20px 20px' : '24px 40px' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: mobile ? 12 : 20, flex: 1 }}>
-          {!mobile && <span style={{ fontFamily: C.mono, fontSize: 11, letterSpacing: '0.15em', color: C.faint, paddingTop: 4, minWidth: 28 }}>—</span>}
+          {!mobile && <span style={{ color: C.faint, paddingTop: 7, minWidth: 28, display: 'flex' }}><Icon name="gauge" size={16} /></span>}
           <div>
             <div style={{ fontFamily: C.serif, fontSize: mobile ? 18 : 22, fontWeight: 600, color: C.ink }}>Key Performance Indicators</div>
             <div style={{ fontFamily: C.mono, fontSize: 11.5, color: C.faint, marginTop: 3, letterSpacing: '0.04em' }}>
@@ -108,14 +108,14 @@ export const KpiSection = ({ kpis, isOpen, onToggle, mobile, ctx }) => (
           )}
 
           {/* Per-measure KPIs */}
-          {kpis.measures.map(block => (
-            <MeasureKpiBlock key={block.measure_id} block={block} mobile={mobile} ctx={ctx} />
+          {measures.map(m => m.kpis?.length > 0 && (
+            <MeasureKpiBlock key={m.id} block={{ title: m.title, indicators: m.kpis }} mobile={mobile} ctx={ctx} />
           ))}
 
           {/* Programme-wide KPIs */}
-          {kpis.programme_wide?.indicators?.length > 0 && (
+          {kpis.programme_wide?.length > 0 && (
             <MeasureKpiBlock
-              block={{ title: 'Programme-Wide', indicators: kpis.programme_wide.indicators }}
+              block={{ title: 'Programme-Wide', indicators: kpis.programme_wide }}
               mobile={mobile}
               ctx={ctx}
             />

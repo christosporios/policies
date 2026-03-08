@@ -3,7 +3,7 @@ import { fmtRange, budgetTotals } from '../lib/format';
 import { resolveTokens } from '../lib/tokens';
 import { Note } from './note';
 
-export const BudgetTable = ({ items, notes, ctx }) => {
+export const BudgetTable = ({ items, assumptions, notes, ctx }) => {
   const oneTime = items.filter(i => i.type === 'one_time');
   const annual = items.filter(i => i.type === 'annual' || i.type === 'annual_credit');
   const { setupLow, setupHigh, annualLow, annualHigh } = budgetTotals(items);
@@ -39,6 +39,16 @@ export const BudgetTable = ({ items, notes, ctx }) => {
           {annualLow > 0 && <TotalRow label="Net annual cost" low={annualLow} high={annualHigh} />}
         </tbody>
       </table>
+      {assumptions?.length > 0 && (
+        <div style={{ background: C.card, border: `1px solid ${C.rule}`, borderRadius: 4, padding: '14px 18px', margin: '16px 0' }}>
+          <div style={{ fontFamily: C.mono, fontSize: 8, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.faint, marginBottom: 8 }}>Assumptions</div>
+          {assumptions.map((a, i) => (
+            <p key={i} style={{ fontSize: 12.5, color: C.mid, lineHeight: 1.6, margin: i < assumptions.length - 1 ? '0 0 8px' : 0 }}>
+              {resolveTokens(a.replace(/\n/g, ' '), ctx)}
+            </p>
+          ))}
+        </div>
+      )}
       {notes?.map((note, i) => <Note key={i}>{resolveTokens(note.replace(/\n/g, ' '), ctx)}</Note>)}
     </div>
   );

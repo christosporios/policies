@@ -13,7 +13,7 @@ export const MeasureSection = ({ measure, index, isOpen, onToggle, ctx, sectionI
   const mobile = ctx.mobile;
   const sectionCtx = {
     stats: measure.context?.stats || [],
-    legal: measure.action?.legal || [],
+    legal: measure.context?.legal || [],
     refs: ctx.refs,
     refIndex: ctx.refIndex,
     onRefClick: ctx.onRefClick,
@@ -45,10 +45,30 @@ export const MeasureSection = ({ measure, index, isOpen, onToggle, ctx, sectionI
 
           <Subheading>Context</Subheading>
           <div style={{ marginBottom: 4 }}>{resolveBody(measure.context?.body, sectionCtx)}</div>
+          {measure.context?.images?.map((img, i) => (
+            <figure key={i} style={{ margin: '24px 0', padding: 0, border: `1px solid ${C.rule}`, borderRadius: 5, overflow: 'hidden' }}>
+              <img src={img.src} alt={img.caption || ''} style={{ width: '100%', display: 'block' }} />
+              {img.caption && (
+                <figcaption style={{ fontSize: 12.5, color: C.mid, padding: '12px 16px', background: C.card, lineHeight: 1.5, borderTop: `1px solid ${C.rule}` }}>
+                  {img.caption}
+                </figcaption>
+              )}
+            </figure>
+          ))}
           {measure.context?.notes?.map((n, i) => <Note key={i}>{resolveTokens(n.replace(/\n/g, ' '), sectionCtx)}</Note>)}
 
           <Subheading>Action</Subheading>
           <div style={{ marginBottom: 4 }}>{resolveBody(measure.action?.body, sectionCtx)}</div>
+          {measure.action?.images?.map((img, i) => (
+            <figure key={i} style={{ margin: '24px 0', padding: 0, border: `1px solid ${C.rule}`, borderRadius: 5, overflow: 'hidden' }}>
+              <img src={img.src} alt={img.caption || ''} style={{ width: '100%', display: 'block' }} />
+              {img.caption && (
+                <figcaption style={{ fontSize: 12.5, color: C.mid, padding: '12px 16px', background: C.card, lineHeight: 1.5, borderTop: `1px solid ${C.rule}` }}>
+                  {img.caption}
+                </figcaption>
+              )}
+            </figure>
+          ))}
           {measure.action?.tranches && (
             <div style={{ display: 'grid', gridTemplateColumns: mobile ? '1fr' : `repeat(${measure.action.tranches.length}, 1fr)`, gap: 1, background: C.rule, border: `1px solid ${C.rule}`, margin: '20px 0' }}>
               {measure.action.tranches.map((t, i) => (
@@ -66,14 +86,14 @@ export const MeasureSection = ({ measure, index, isOpen, onToggle, ctx, sectionI
           {measure.action?.params && <ParamGrid params={measure.action.params} mobile={ctx.mobile} />}
           {measure.action?.notes?.map((n, i) => <Note key={i}>{resolveTokens(n.replace(/\n/g, ' '), sectionCtx)}</Note>)}
 
-          {measure.case_studies?.length > 0 && (
+          {measure.context?.case_studies?.length > 0 && (
             <>
-              {measure.case_studies.map((cs, i) => <CaseStudy key={i} cs={cs} ctx={sectionCtx} />)}
+              {measure.context.case_studies.map((cs, i) => <CaseStudy key={i} cs={cs} ctx={sectionCtx} />)}
             </>
           )}
 
           <Subheading>Budget</Subheading>
-          <BudgetTable items={measure.budget.items} notes={measure.budget.notes} ctx={sectionCtx} />
+          <BudgetTable items={measure.budget.items} assumptions={measure.budget.assumptions} notes={measure.budget.notes} ctx={sectionCtx} />
         </div>
       </AccordionBody>
     </div>

@@ -39,6 +39,7 @@ export default function App() {
     if (hash && allIds.includes(hash)) return new Set([hash]);
     return new Set([policy.measures[0].id]);
   });
+  const hasUserNavigated = useRef(false);
 
   const [highlightRef, setHighlightRef] = useState(null); // { id, tick }
   const [copied, setCopied] = useState(false);
@@ -60,12 +61,13 @@ export default function App() {
     return () => { if (el) observer.unobserve(el); };
   }, [mobile]);
 
-  // Sync URL hash when sections change
+  // Sync URL hash when sections change (only after user interaction)
   useEffect(() => {
+    if (!hasUserNavigated.current) return;
     const ids = [...openSections];
     if (ids.length === 1) {
       window.history.replaceState(null, '', `#${ids[0]}`);
-    } else if (ids.length === 0) {
+    } else {
       window.history.replaceState(null, '', window.location.pathname);
     }
   }, [openSections]);
@@ -75,6 +77,7 @@ export default function App() {
   const refIndex = refIndexRef.current;
 
   const toggle = useCallback((id) => {
+    hasUserNavigated.current = true;
     setOpenSections(prev => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
@@ -84,10 +87,11 @@ export default function App() {
   }, []);
 
   const toggleAndScroll = useCallback((id) => {
+    hasUserNavigated.current = true;
     setOpenSections(prev => {
+      if (prev.has(id)) return prev;
       const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
+      next.add(id);
       return next;
     });
     setTimeout(() => {
@@ -133,7 +137,7 @@ export default function App() {
   const allStats = policy.measures.flatMap(m => m.context?.stats || []);
   const metaCtx = { stats: allStats, legal: [], refs: policy.references, refIndex, onRefClick, mobile };
   const ctx = { refs: policy.references, refIndex, onRefClick, mobile };
-  const { costs } = policy.meta;
+  const summary = policy.summary;
 
   return (
     <div style={{ fontFamily: C.sans, background: C.bg, color: C.ink, fontSize: 15, lineHeight: 1.7, WebkitFontSmoothing: 'antialiased', minHeight: '100vh' }}>
@@ -155,7 +159,12 @@ export default function App() {
       {/* HEADER */}
       <header ref={headerRef} style={{ background: C.ink, color: '#f7f6f4', padding: mobile ? '40px 0 36px' : '64px 0 56px', position: 'relative', overflow: 'hidden' }}>
         {policy.meta.background_image && (
-          <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${policy.meta.background_image})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08, pointerEvents: 'none' }} />
+          <motion.div
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 12, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ position: 'absolute', inset: 0, backgroundImage: `url(${policy.meta.background_image})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08, pointerEvents: 'none' }}
+          />
         )}
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px)', pointerEvents: 'none' }} />
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: 'easeOut' }} style={{ maxWidth: 860, margin: '0 auto', padding: `0 ${px}px`, position: 'relative' }}>
@@ -173,8 +182,8 @@ export default function App() {
             {[
               { label: 'Scope', value: policy.meta.scope },
               { label: 'Status', value: policy.meta.status },
-              { label: 'Year 1 Annual', value: fmtRange(costs.annual_low, costs.annual_high) },
-              { label: 'Year 1 Setup', value: fmtRange(costs.setup_low, costs.setup_high) },
+              { label: 'Year 1 Annual', value: fmtRange(summary.annual.low, summary.annual.high) },
+              { label: 'Year 1 Setup', value: fmtRange(summary.setup.low, summary.setup.high) },
             ].map(({ label, value }) => (
               <div key={label} style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                 <span style={{ fontFamily: C.mono, fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(247,246,244,0.3)' }}>{label}</span>
@@ -244,7 +253,7 @@ export default function App() {
         {policy.kpis && (
           <>
             <div style={{ maxWidth: 860, margin: '0 auto', fontFamily: C.mono, fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.label, padding: mobile ? '40px 20px 4px' : '40px 40px 4px' }}>Performance</div>
-            <KpiSection kpis={policy.kpis} isOpen={openSections.has('kpis')} onToggle={() => toggle('kpis')} mobile={mobile} ctx={ctx} />
+            <KpiSection kpis={policy.kpis} measures={policy.measures} isOpen={openSections.has('kpis')} onToggle={() => toggle('kpis')} mobile={mobile} ctx={ctx} />
           </>
         )}
 
