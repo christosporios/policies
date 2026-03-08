@@ -3,6 +3,7 @@ import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { policies, getPolicy } from './lib/policies';
 import { PolicyIndex } from './components/policy-index';
 import { PolicyViewer } from './components/policy-viewer';
+import { CreatePage } from './components/create-page';
 
 function slugFromPath() {
   const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
@@ -28,11 +29,29 @@ export default function App() {
     setActiveSlug(slug);
   }, []);
 
-  const activePolicy = activeSlug ? getPolicy(activeSlug) : null;
+  const activePolicy = activeSlug && activeSlug !== 'create' ? getPolicy(activeSlug) : null;
   const validPolicies = policies.filter(p => p.data);
 
   if (!activeSlug && validPolicies.length === 1) {
     return <PolicyViewer key={validPolicies[0].slug} policyEntry={validPolicies[0]} />;
+  }
+
+  const isCreate = activeSlug === 'create';
+
+  if (isCreate) {
+    return (
+      <AnimatePresence mode="wait">
+        <motion.div
+          key="create"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+        >
+          <CreatePage onBack={() => navigate(null)} />
+        </motion.div>
+      </AnimatePresence>
+    );
   }
 
   return (

@@ -4,6 +4,37 @@ import { C } from '../lib/theme';
 import { fmtRange } from '../lib/format';
 import { useIsMobile } from '../hooks/use-is-mobile';
 
+const CreateCard = ({ index, onSelect, style }) => {
+  const [hovered, setHovered] = useState(false);
+  const mobile = useIsMobile();
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
+      onClick={() => onSelect('create')}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        position: 'relative', overflow: 'hidden', borderRadius: 6,
+        cursor: 'pointer', minHeight: mobile ? 120 : 160,
+        display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
+        border: `1px dashed rgba(247,246,244,${hovered ? 0.3 : 0.15})`,
+        background: hovered ? 'rgba(26,25,23,0.04)' : 'transparent',
+        transition: 'background 0.3s, border-color 0.3s',
+        ...style,
+      }}
+    >
+      <div style={{ width: 40, height: 40, borderRadius: '50%', border: `1px solid ${C.rule}`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16, background: hovered ? C.ink : 'transparent', transition: 'background 0.3s' }}>
+        <span style={{ fontSize: 20, color: hovered ? '#f7f6f4' : C.faint, transition: 'color 0.3s' }}>+</span>
+      </div>
+      <span style={{ fontFamily: C.serif, fontSize: mobile ? 18 : 22, fontWeight: 600, color: C.mid }}>Create your own</span>
+      <span style={{ fontFamily: C.serif, fontSize: mobile ? 14 : 15, fontStyle: 'italic', color: C.faint, marginTop: 4 }}>Build a structured policy proposal</span>
+    </motion.div>
+  );
+};
+
 const PolicyCard = ({ entry, index, onSelect }) => {
   const { data: policy, slug } = entry;
   const [hovered, setHovered] = useState(false);
@@ -108,12 +139,13 @@ export const PolicyIndex = ({ policies, onSelect }) => {
       <div style={{ maxWidth: 960, width: '100%', padding: mobile ? '32px 20px' : '48px 40px' }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: mobile ? '1fr' : policies.length === 1 ? '1fr' : 'repeat(2, 1fr)',
+          gridTemplateColumns: mobile ? '1fr' : (policies.length + 1) <= 2 ? '1fr' : 'repeat(2, 1fr)',
           gap: mobile ? 20 : 24,
         }}>
           {policies.filter(p => p.data).map((entry, i) => (
             <PolicyCard key={entry.slug} entry={entry} index={i} onSelect={onSelect} />
           ))}
+          <CreateCard index={policies.filter(p => p.data).length} onSelect={onSelect} style={{ gridColumn: '1 / -1' }} />
         </div>
       </div>
     </div>
