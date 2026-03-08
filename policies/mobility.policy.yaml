@@ -1,9 +1,9 @@
 meta:
   title: Athens Mobility Reform
-  subtitle: A Three-Measure Policy Proposal
+  subtitle: Less parking, better alternatives
   scope: Municipality of Athens
   status: Proposal
-  background_image: /hero-bg.jpg
+  background_image: /traffic.jpg
   tagline: >
     Athens has become a parking lot. With {{stat:cars_per_capita}} cars per capita —
     one of Europe's highest — the city's pavements, bus stops, and crossings are

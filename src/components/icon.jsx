@@ -10,6 +10,9 @@ export const Icon = ({ name, size = 24, style = {} }) => {
     coins:  <svg {...props}><circle cx="9" cy="12" r="6"/><path d="M15 6a6 6 0 0 1 0 12"/><path d="M9 9v2h2"/><path d="M7 13h4"/></svg>,
     gauge:  <svg {...props}><path d="M12 20a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/><path d="M12 12l3-3"/><circle cx="12" cy="12" r="1"/></svg>,
     book:   <svg {...props}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>,
+    home:   <svg {...props}><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
+    handshake: <svg {...props}><path d="M11 17l-1.5 1.5a2.12 2.12 0 0 1-3 0L4 16"/><path d="M20 8l-3.5-3.5a2.12 2.12 0 0 0-3 0L7 11"/><path d="M4 8l3.5-3.5a2.12 2.12 0 0 1 3 0L17 11"/><path d="M20 16l-2.5 2.5a2.12 2.12 0 0 1-3 0L13 17"/><line x1="6" y1="14" x2="10" y2="10"/><line x1="14" y1="14" x2="18" y2="10"/></svg>,
+    eye:    <svg {...props}><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>,
   };
   return icons[name] || null;
 };

@@ -1,0 +1,1235 @@
+meta:
+  title: Athens Housing Reform
+  subtitle: More homes, lower rents
+  scope: Municipality of Athens
+  status: Proposal
+  background_image: /housing.jpg
+  tagline: >
+    Athens has {{stat:vacant_flats}} vacant flats and zero social housing. Rents
+    have risen 90% since 2017 while a standard 60 sqm apartment now consumes
+    {{stat:rent_to_median_wage}} of the median net wage. Greece is the only EU
+    member state with no social rental stock. This paper proposes four coordinated
+    measures: build an institutional housing engine inside the municipality,
+    mobilise vacant stock through incentives and enforcement, guarantee landlord
+    income to de-risk social letting, and create a permanent data and advisory
+    infrastructure. Each measure is within the mayor's direct legal authority
+    under Law 5229/2025 and the Municipal Code; together they are designed to be
+    mutually reinforcing.
+  footer: All costs in EUR · Numbers grounded in cited sources · March 2026
+
+
+measures:
+
+  - id: social_rental_agency
+    title: Municipal Social Rental Agency
+    subtitle: EATA housing division · Lease-and-sublet · Below-market rents
+    tagline: Mobilise vacant stock without acquisition — 500 units in 30 months
+    icon: home
+
+    context:
+      body: |
+        Athens has {{stat:vacant_flats}} vacant flats — 31% of the municipality's
+        dwelling stock — alongside a housing cost overburden rate of {{stat:overburden}}
+        (3.5× the EU average of 8.2%) {{ref:eurostat_2023}}. The paradox is structural:
+        vacancy coexists with acute unaffordability because owners lack capital or
+        confidence to rent, while tenants cannot access affordable units.
+
+        Greece has effectively {{stat:social_housing}} social rental housing stock — the
+        only EU member state with none {{ref:housing_europe_2025}}. The Workers' Housing
+        Organisation (OEK), the only significant public housing body, was abolished in
+        February 2012 as a bailout condition {{ref:eliamep_2025}}. Its successor DYPA
+        manages legacy files, not housing supply.
+
+        At the municipal level, Athens currently operates {{stat:municipal_apartments}}
+        social apartments, has funded {{stat:renovation_grants}} renovation grants at up
+        to €10,055/unit, and provides {{stat:rent_subsidies}} rent subsidies for young
+        people aged 25–39 {{ref:tovima_doukas_2025}}. There is no dedicated housing
+        department, no social housing stock, and no rental intermediation programme.
+
+        **Law 5229/2025 changes the legal landscape.** Enacted in September 2025 (FEK
+        A-158/2025), this law introduces "social rental" into Greek law for the first
+        time. Municipalities may now act as social housing providers, set social rental
+        prices, enter Social Antiparochi agreements (municipality provides land/buildings,
+        private contractor builds, minimum 30% social housing), and operate social rental
+        intermediary services through their development companies
+        {{ref:law_5229_2025}}. This is the enabling framework that makes a Municipal
+        Social Rental Agency (SRA) legally unambiguous.
+
+        **Why lease-and-sublet, not acquisition.** A typical 60–70 sqm apartment in
+        central Athens costs €150,000–200,000 to purchase {{ref:global_property_guide}}.
+        Acquiring 500 units would require €75–100 million in capital — far beyond
+        municipal capacity. The SRA model avoids acquisition entirely: the municipality
+        leases vacant apartments from private owners at a negotiated rate (typically
+        10–20% below market), guarantees rent payment and maintenance, and sublets to
+        eligible tenants at 20–40% below market. The municipality absorbs the rent
+        differential as the cost of social housing provision. This model has been
+        operational in Brussels since the 1990s (24 SRAs managing nearly 8,000 units)
+        {{ref:brussels_sra}} and was piloted in Thessaloniki from 2022 under MDAT
+        {{ref:thessaloniki_sra}}.
+
+        **Why owners participate.** Greek landlords' primary concerns, as articulated
+        by POMIDA (Panhellenic Federation of Property Owners), are non-payment risk,
+        property damage, and eviction difficulty {{ref:pomida_2025}}. The SRA addresses
+        all three: the municipality guarantees rent, manages the property, handles
+        maintenance, and is the contractual tenant — the owner never deals with the
+        end-occupant. For owners of vacant properties incurring ENFIA tax and
+        deterioration costs with zero income, the proposition is: guaranteed income with
+        zero management burden versus continued vacancy with continued costs.
+      stats:
+        - id: vacant_flats
+          label: Vacant flats in Municipality of Athens
+          value: "~132,000"
+          source: "{{ref:eteron_vacancy}}"
+        - id: overburden
+          label: Housing cost overburden rate (Greece)
+          value: "28.9%"
+          source: "{{ref:eurostat_2023}}"
+        - id: social_housing
+          label: Social rental housing stock (Greece)
+          value: "0%"
+          source: "{{ref:housing_europe_2025}}"
+        - id: municipal_apartments
+          label: Current municipal social apartments
+          value: "7"
+          source: "{{ref:tovima_doukas_2025}}"
+        - id: renovation_grants
+          label: Current renovation grants funded
+          value: "70"
+          source: "{{ref:gtp_renovation_2024}}"
+        - id: rent_subsidies
+          label: Current rent subsidies (ages 25–39)
+          value: "257"
+          source: "{{ref:tovima_doukas_2025}}"
+        - id: rent_to_median_wage
+          label: "Average 60 sqm rent as share of median net wage"
+          value: "~60%"
+          source: "{{ref:eliamep_2025}}"
+      legal:
+        - id: law_5229
+          citation: "Law 5229/2025 (FEK A-158/2025)"
+          relevance: >
+            Introduces "social rental" into Greek law. Municipalities may act as social
+            housing providers, set social rental prices, enter Social Antiparochi
+            agreements, and operate social rental intermediary services through municipal
+            development companies. This is the primary enabling statute for the SRA.
+        - id: law_4555_housing
+          citation: "Law 4555/2018, Articles 182–183 (Kleisthenis Reform)"
+          relevance: >
+            Explicit municipal authority to form and expand Municipal Development
+            Companies. EATA/ADDMA already operates under this framework. Expansion of
+            its mandate to housing management requires articles-of-association amendment
+            and municipal council approval — procedurally straightforward.
+        - id: law_3852_housing
+          citation: "Law 3852/2010 (Kallikratis), Article 75"
+          relevance: >
+            General municipal competency for "quality of life" including social
+            protection and solidarity. Combined with Law 5229/2025, provides a double
+            legal basis for municipal housing activity.
+      case_studies:
+        - name: Thessaloniki Social Rental Agency (MDAT)
+          location: Thessaloniki, Greece
+          period: "2022–ongoing"
+          type: positive
+          body: |
+            The Major Development Agency of Thessaloniki (MDAT SA) established Greece's
+            first Social Rental Agency, acting as intermediary between owners of vacant
+            public properties and vulnerable tenants. The pilot renovated 30 apartments
+            with RRF funding, developing from scratch every operational element: property
+            transfer models, tenancy contracts, procurement, unit-beneficiary matching,
+            and social rent-setting methodology {{ref:thessaloniki_sra}}. MDAT staff
+            noted that given the absence of legislative and institutional frameworks,
+            the SRA had to invent a model for each step. The model has since been
+            mainstreamed into ESF+ structural funds for 2021–2027, with a €1 million
+            operational budget for regional rollout from 2026.
+          lesson: |
+            The Thessaloniki pilot proves the SRA model works in Greece and provides
+            operational templates Athens can adopt rather than invent. The key
+            innovation — using public-property owners as the initial landlord pool —
+            lowers political friction while the programme builds credibility with
+            private landlords.
+        - name: Brussels Social Rental Agencies
+          location: Brussels, Belgium
+          period: "1990s–ongoing"
+          type: positive
+          body: |
+            Brussels operates 24 Social Rental Agencies managing nearly 8,000 units.
+            The SRA model leases from private owners at negotiated rates and sublets
+            to low-income tenants, absorbing the rent differential as a public cost.
+            The model has attracted institutional investors constructing build-to-rent
+            projects specifically for SRA placement {{ref:brussels_sra}}. Operational
+            costs run approximately €1,500–2,500/unit/year depending on service
+            intensity.
+          lesson: |
+            Scale is achievable within the SRA model. The Brussels experience shows
+            that once credibility is established with landlords, the pool of willing
+            participants grows organically. Athens should target institutional and
+            public-sector landlords first (social security institutions alone own
+            ~1,120 buildings nationally, 49% vacant), then expand to private owners.
+        - name: Lisbon Programa Renda Segura
+          location: Lisbon, Portugal
+          period: "2020–ongoing"
+          type: cautionary
+          body: |
+            Lisbon launched Renda Segura in 2020 with a €15 million budget, offering
+            landlords three years' rent paid in advance in exchange for below-market
+            leases. Reference rents ranged from €450 (studio) to €1,000 (T4). First
+            results: 177 houses rented at an average €723/month. Adherence was lower
+            than hoped — only 183 properties by 2021 {{ref:lisbon_renda_segura}} —
+            because the rents offered were still below what landlords could earn on
+            the open market, and Lisbon's property market was booming.
+          lesson: |
+            Lisbon demonstrates that rent guarantees alone are insufficient if the
+            offered rate is too far below market. Athens's SRA must price leases at
+            no more than 10–20% below market to attract landlords. The differential
+            between lease-in and sublet-out rates is the subsidy cost the municipality
+            absorbs — and must budget for explicitly.
+      notes:
+        - >
+          The one-development-organisation-per-municipality limit (introduced 2024)
+          means Athens cannot create a separate housing company. EATA expansion is the
+          only institutional path. This requires articles-of-association amendment and
+          Municipal Council approval — achievable with Doukas's 26/49 supermajority.
+        - >
+          The Thessaloniki pilot used public-property owners exclusively. Athens must
+          extend to private landlords to reach scale. The guarantee fund (Measure 3) is
+          the mechanism that makes this extension viable.
+
+    action:
+      body: |
+        EATA establishes a dedicated Housing Division with a mandate to operate as a
+        Social Rental Agency under Law 5229/2025. The division leases apartments from
+        owners of vacant properties — initially targeting social security institutions,
+        DYPA legacy stock, and municipal buildings, then extending to private landlords
+        from month 12.
+
+        For each property, the SRA negotiates a lease-in rate at 10–20% below the
+        prevailing market rent for the area, guarantees rent for the full lease term
+        (minimum 3 years), assumes responsibility for maintenance and minor repairs, and
+        manages the tenant relationship entirely. The owner's only obligation is to
+        provide a habitable unit (or to accept SRA-managed renovation, repaid through
+        reduced rent). The SRA then sublets to eligible tenants — prioritised by income,
+        housing cost burden, and vulnerability criteria set by Municipal Council decision
+        — at 20–40% below market. The rent differential is the programme's operating cost.
+
+        For units requiring renovation, the SRA draws on the national €400 million
+        renovation programme (launching 2026, up to 90% coverage / €36,000 per dwelling)
+        and the existing municipal pilot (up to €10,055/unit). Where neither applies,
+        renovation costs are capitalised into the lease through reduced rent to the owner
+        over the lease term.
+
+        Tranche 1 (months 6–12): 100 units from public-property owners and municipal
+        buildings. Tranche 2 (months 12–24): 200 additional units, extending to private
+        landlords via the guarantee fund. Tranche 3 (months 24–30): 200 additional units,
+        targeting neighbourhoods where Measure 2 enforcement has identified concentrated
+        vacancy.
+
+    budget:
+      items:
+        - id: sra_staff
+          label: "SRA staff — 8 FTE: programme manager, 3 housing officers, 2 social workers, property manager, admin (incl. employer social contributions ~25%)"
+          type: annual
+          low: 350000
+          high: 480000
+        - id: rent_differential
+          label: "Rent differential subsidy — 500 units at average €120/month gap between lease-in and sublet-out rates"
+          type: annual
+          low: 500000
+          high: 900000
+          note: >
+            This is the core operating cost. At 100 units (Year 1) the cost is
+            €100–180k; at 500 units (Year 3) it reaches the upper range. The
+            differential depends on negotiated lease-in rates and council-set
+            sublet rates. Budget assumes average €120/unit/month gap.
+        - id: sra_renovation
+          label: "Light renovation for SRA units requiring work (average €12,000/unit × 150 units over 30 months, net of national programme co-financing)"
+          type: one_time
+          low: 600000
+          high: 1000000
+          note: >
+            150 of 500 units are estimated to need light renovation. The national
+            €400M renovation programme covers up to 90% / €36,000 per unit; this
+            budget line covers the municipal co-financing share and units that fall
+            outside national programme eligibility.
+        - id: sra_platform
+          label: "Property management platform — tenant portal, landlord portal, maintenance ticketing, rent collection"
+          type: one_time
+          low: 80000
+          high: 150000
+        - id: sra_legal
+          label: "Legal costs — EATA articles-of-association amendment, lease template drafting, tenant contract framework, council approvals"
+          type: one_time
+          low: 40000
+          high: 80000
+      notes:
+        - >
+          No acquisition costs. The SRA model is lease-based. If the municipality later
+          acquires units (via donation, Social Antiparochi, or purchase), they enter the
+          SRA portfolio at zero lease-in cost, improving the subsidy economics.
+        - >
+          ESF+ funding covers SRA operational costs at up to 85% co-financing for
+          less-developed regions. Thessaloniki's SRA received €1M for 2026 rollout.
+          Athens should submit an equivalent application immediately. The full cost is
+          budgeted municipally; any EU funding received reduces net outlay
+          retrospectively.
+
+    kpis:
+      - id: units_under_management
+        label: Units under SRA management (cumulative)
+        type: operational
+        unit: units
+        baseline: "7 (current municipal social apartments)"
+        target: "100 by month 12 · 300 by month 24 · 500 by month 30"
+        frequency: monthly
+        source: EATA Housing Division operations log
+
+      - id: avg_lease_in_discount
+        label: Average lease-in rate as percentage of market rent
+        type: operational
+        unit: percentage of market rent
+        baseline: n/a
+        target: "80–90% of prevailing market rent in each neighbourhood"
+        frequency: quarterly
+        source: EATA Housing Division / Housing Observatory market data
+        note: >
+          If the average lease-in rate exceeds 90% of market, the subsidy cost per
+          unit rises unsustainably. If it falls below 80%, landlord participation
+          will collapse. This KPI is the tension between fiscal sustainability and
+          programme attractiveness.
+
+      - id: avg_sublet_rate
+        label: Average sublet rate as percentage of market rent
+        type: outcome
+        unit: percentage of market rent
+        baseline: n/a
+        target: "60–80% of prevailing market rent"
+        frequency: quarterly
+        source: EATA Housing Division
+        note: >
+          The spread between lease-in and sublet rate is the per-unit subsidy cost.
+          A 10–20% discount in, 20–40% discount out = 10–20% spread = €80–160/unit/month
+          on a €800/month market rent. This spread must be tracked and reported publicly.
+
+      - id: landlord_retention
+        label: Landlord contract renewal rate (at first renewal point)
+        type: outcome
+        unit: percentage
+        baseline: n/a
+        target: "≥75% renewal rate at 3-year lease expiry"
+        frequency: at renewal
+        source: EATA Housing Division
+        note: >
+          The programme's long-term viability depends on landlords renewing. Below 75%
+          renewal, the SRA is spending disproportionate effort on landlord acquisition
+          rather than tenant service. Low renewal combined with high vacancy suggests
+          the lease-in rate is too low.
+
+      - id: tenant_housing_burden
+        label: Average housing cost burden of SRA tenants (rent as % of income)
+        type: outcome
+        unit: percentage
+        baseline: ">40% (eligibility threshold — tenants must be cost-burdened to qualify)"
+        target: "≤30% after SRA placement"
+        frequency: quarterly
+        source: EATA Housing Division / tenant income declarations
+        note: >
+          This is the programme's core outcome metric. If SRA tenants' housing
+          burden does not fall below 30%, the sublet rates are set too high or the
+          programme is not reaching genuinely cost-burdened households.
+
+
+  - id: vacancy_enforcement
+    title: Vacancy Register & Building Enforcement
+    subtitle: TAP data · Dangerous building orders · Systematic identification
+    tagline: Map every vacant flat; compel owners of derelict buildings to act
+    icon: shield
+
+    context:
+      body: |
+        Athens has no systematic record of which properties are vacant, who owns them,
+        or what condition they are in. The 2011 census recorded 31% vacancy; the 2021
+        census has not published municipal-level data {{ref:eteron_vacancy}}. Without a
+        register, the SRA cannot target outreach, building enforcement cannot prioritise,
+        and the municipality cannot make an evidence-based case for national vacancy
+        legislation.
+
+        **Identification is technically feasible today.** The municipality already
+        collects the Municipal Property Fee (TAP) via electricity bills — properties
+        with zero or near-zero consumption can be identified as vacant. Amsterdam uses
+        exactly this methodology under its Leegstandverordening (Vacancy Bylaw),
+        cross-referencing utility data with municipal records to identify vacant
+        properties, impose fines of €4,500–€9,000, and nominate tenants for properties
+        vacant beyond 12 months {{ref:amsterdam_vacancy}}. Athens has the data; it lacks
+        the analytical infrastructure to use it.
+
+        **Building enforcement is a separate but complementary tool.** Under PD
+        13/22.4.1929 (as amended) and Article 94 of Law 3852/2010, the municipality
+        can declare buildings structurally dangerous, order safety measures or repair,
+        execute demolition or stabilisation if owners fail to comply, and recover costs
+        via property lien. Law 4495/2017 gives the municipality fining powers for
+        building code violations. The national government has allocated {{stat:green_fund}}
+        from the Green Fund for demolitions, and a new €130 million satellite/drone
+        monitoring system for illegal construction is expected operational by summer 2026
+        {{ref:tovima_illegal_construction}}.
+
+        These tools have been used sporadically for genuinely dangerous buildings. They
+        have never been deployed systematically as a housing policy instrument — to
+        create a "renovate or face consequences" dynamic that pushes vacant stock toward
+        the rental market.
+
+        **What the municipality cannot do.** Athens cannot impose vacancy taxes or
+        surcharges — ENFIA is entirely national. The recent ENFIA vacancy surcharge
+        (double ENFIA) applies only to bank-owned and fund-managed properties
+        {{ref:enfia_vacancy}}. A general municipal vacancy penalty would require
+        national enabling legislation. The register and enforcement programme therefore
+        operate through existing building-safety and building-code powers, not through
+        fiscal penalties.
+      stats:
+        - id: vacancy_rate
+          label: Dwelling vacancy rate (Municipality of Athens, 2011 census)
+          value: "31%"
+          source: "{{ref:eteron_vacancy}}"
+        - id: avg_building_age
+          label: Average building age in central Athens
+          value: "48–51 years"
+          source: "{{ref:athens_times_vacancy}}"
+        - id: green_fund
+          label: National Green Fund allocation for demolitions
+          value: "€2 million"
+          source: "{{ref:tovima_illegal_construction}}"
+      legal:
+        - id: pd_1929
+          citation: "PD 13/22.4.1929 (as amended)"
+          relevance: >
+            Municipal authority to declare buildings structurally dangerous, order
+            safety measures, execute demolition if owners fail to comply, and recover
+            costs via property lien. The core enforcement power for derelict buildings.
+        - id: law_3852_art94
+          citation: "Law 3852/2010 (Kallikratis), Article 94"
+          relevance: >
+            Transfers building safety enforcement from prefectures to municipalities.
+            Combined with PD 13/1929, gives the municipality operational authority over
+            dangerous building declarations and enforcement.
+        - id: law_4495
+          citation: "Law 4495/2017"
+          relevance: >
+            Building code enforcement and fining powers. Municipality can impose fines
+            for building code violations through its Urban Planning Services.
+      case_studies:
+        - name: Amsterdam Vacancy Bylaw (Leegstandverordening)
+          location: Amsterdam, Netherlands
+          period: "2009–ongoing"
+          type: positive
+          body: |
+            Amsterdam's vacancy bylaw, enabled by the national Vacant Property Act,
+            requires owners to report vacancy and allows the municipality to fine
+            owners €4,500–€9,000 for properties vacant beyond 6 months (tightened
+            to 3 months in 2022 proposals) and to nominate tenants for properties
+            vacant beyond 12 months {{ref:amsterdam_vacancy}}. The system uses
+            utility consumption data — the same data source Athens already collects
+            via TAP.
+          lesson: |
+            Athens cannot impose fines (no enabling legislation), but the
+            identification methodology is directly replicable. The register's value
+            is threefold: evidence base for policy, targeting for the SRA programme,
+            and political leverage for advocating national vacancy legislation.
+      notes:
+        - >
+          The scope of dangerous building orders is a legal grey zone analogous to
+          the towing authority question in mobility policy. The municipality has clear
+          authority over buildings that are structurally dangerous. Whether this can
+          be stretched to buildings that are severely degraded but not yet structurally
+          failing is untested. The municipality should obtain a formal legal opinion
+          from the Municipal Legal Service before extending enforcement beyond the
+          established definition.
+        - >
+          Building enforcement creates political friction with property owners.
+          POMIDA will resist any programme perceived as punitive. The enforcement
+          programme must be sequenced after the SRA and guarantee fund are operational,
+          so that owners facing enforcement have a constructive alternative: enrol the
+          property in the SRA with guaranteed income rather than face fines and
+          compulsory works.
+
+    action:
+      body: |
+        The programme has two components: a vacancy register and a building enforcement
+        unit.
+
+        **Vacancy Register.** EATA's Housing Division builds a GIS-linked database
+        cross-referencing TAP billing records (identifying zero/low electricity
+        consumption), AADE ENFIA declarations (which include occupancy status), and the
+        municipality's existing building inspection records. Properties identified as
+        likely vacant are verified by field survey (municipal engineers, 2-person teams).
+        The register is operational by month 9 and updated quarterly. It feeds directly
+        into the SRA's landlord outreach programme: owners of verified vacant properties
+        receive a formal invitation to participate in the SRA with specific terms.
+
+        **Building Enforcement Unit.** A dedicated team of 4 engineers and 1 legal
+        officer within the Urban Planning Department conducts systematic surveys of
+        buildings flagged as both vacant and degraded by the register. For genuinely
+        dangerous buildings, the unit issues notices under PD 13/1929, with the standard
+        escalation: notice → compliance period → fine → municipal intervention → cost
+        recovery via lien. For buildings that are severely degraded but not yet
+        structurally dangerous, the unit initially uses building-code-violation fines
+        under Law 4495/2017 (e.g., exposed wiring, collapsed balconies, missing fire
+        safety) as the enforcement lever. This is the established legal ground; extension
+        to broader "abandonment" enforcement requires the legal opinion noted above and
+        is a Year 2 objective.
+
+        The two components are designed to operate as a funnel: the register identifies
+        targets; the SRA invites participation; enforcement acts on owners who neither
+        participate nor maintain their buildings. The sequencing matters — enforcement
+        without an alternative generates backlash; enforcement with a visible, attractive
+        alternative generates compliance.
+
+    budget:
+      items:
+        - id: register_database
+          label: "Vacancy register — GIS database development, TAP/AADE data integration, field survey equipment"
+          type: one_time
+          low: 200000
+          high: 400000
+        - id: enforcement_unit
+          label: "Building enforcement unit — 4 engineers + 1 legal officer (annual; incl. employer social contributions)"
+          type: annual
+          low: 280000
+          high: 400000
+        - id: field_surveys
+          label: "Field survey costs — verification of vacant/degraded buildings (500 surveys/year, travel, equipment)"
+          type: annual
+          low: 40000
+          high: 80000
+        - id: demolition_emergency
+          label: "Emergency stabilisation / demolition fund (top-up beyond Green Fund allocation)"
+          type: annual
+          low: 100000
+          high: 250000
+      notes:
+        - >
+          Revenue from building code fines is not credited to the programme budget. Fine
+          revenue is uncertain and politically contested; the programme is sized to be
+          defensible on cost alone.
+        - >
+          The €130M national satellite/drone monitoring system for illegal construction,
+          expected operational by summer 2026, will reduce field survey costs significantly
+          once available. The Year 1 budget assumes manual survey methodology.
+
+    kpis:
+      - id: properties_registered
+        label: Properties identified and verified as vacant (cumulative)
+        type: operational
+        unit: properties
+        baseline: "0 (no systematic register exists)"
+        target: "≥5,000 by month 12 · ≥15,000 by month 24"
+        frequency: quarterly
+        source: EATA Housing Division / vacancy register
+
+      - id: outreach_response_rate
+        label: SRA invitation response rate (share of contacted owners who engage)
+        type: operational
+        unit: percentage of contacted owners
+        baseline: n/a
+        target: "≥10% engagement rate by month 18"
+        frequency: quarterly
+        source: EATA Housing Division
+        note: >
+          A 10% engagement rate on 5,000 identified properties yields 500 leads —
+          enough to supply the SRA pipeline. Below 5%, the outreach methodology or
+          SRA terms need revision. Above 15% indicates strong demand and potential
+          to scale faster.
+
+      - id: enforcement_actions
+        label: Formal enforcement notices issued (dangerous building + building code)
+        type: operational
+        unit: notices/quarter
+        baseline: "To be established from existing Urban Planning records"
+        target: "≥50/quarter by month 12"
+        frequency: quarterly
+        source: Urban Planning Department
+
+      - id: compliance_rate
+        label: Owner compliance rate (renovation or SRA enrolment within 6 months of notice)
+        type: outcome
+        unit: percentage
+        baseline: n/a
+        target: "≥40% compliance within 6 months of notice by month 24"
+        frequency: quarterly
+        source: Urban Planning Department / EATA Housing Division
+        note: >
+          This is the critical outcome metric. If compliance is low, either
+          enforcement is not credible (notices without follow-through) or the
+          SRA alternative is not attractive enough. The programme design requires
+          both levers to work in tandem.
+
+
+  - id: guarantee_fund
+    title: Municipal Landlord Guarantee Fund
+    subtitle: Rent guarantee · Damage cover · EATA-managed
+    tagline: Eliminate landlord risk — guaranteed income for below-market leases
+    icon: handshake
+
+    context:
+      body: |
+        The SRA model requires willing landlords. For institutional and public-sector
+        property owners, willingness follows from policy direction. For private landlords
+        — who own the overwhelming majority of Athens's 132,000 vacant flats — willingness
+        depends on eliminating the risks they perceive.
+
+        POMIDA has consistently identified three barriers to private landlords entering
+        the rental market, particularly for lower-income tenants: non-payment risk,
+        property damage, and the difficulty and cost of eviction under Greek tenancy law
+        {{ref:pomida_2025}}. The absence of a tenant creditworthiness system in Greece
+        means landlords have no reliable way to assess payment risk. The result is
+        rational: landlords with the financial capacity to absorb vacancy prefer empty
+        units over uncertain tenants.
+
+        A municipal guarantee fund addresses all three barriers directly. The municipality
+        — via EATA — guarantees the landlord's rent for the full lease term, covers
+        damage beyond normal wear, and is itself the contractual tenant (the end-occupant
+        is a subtenant of EATA, not a direct tenant of the owner). The landlord's
+        counterparty is the municipality, not an individual of unknown creditworthiness.
+
+        **Precedent.** Oxford City Council operates a Rent Guarantee Service that covers
+        void periods, guarantees income at roughly 10% below market rate, and has
+        enrolled over 400 landlords {{ref:oxford_guarantee}}. In well-managed schemes
+        with social worker support, default rates run 5–10%. The guarantee is funded
+        from a ring-fenced reserve, not annual appropriations — losses are covered from
+        the reserve, which is topped up annually.
+      legal:
+        - id: guarantee_legal
+          citation: "Municipal Code (Law 3463/2006), Articles 158–162"
+          relevance: >
+            Municipality may enter contractual obligations and provide guarantees
+            in furtherance of its public purposes. The guarantee fund is a standard
+            contractual arrangement, not a novel financial instrument. Structuring
+            through EATA (a legal entity) provides additional legal insulation.
+      case_studies:
+        - name: Oxford City Council Rent Guarantee Service
+          location: Oxford, United Kingdom
+          period: "2010s–ongoing"
+          type: positive
+          body: |
+            Oxford's scheme guarantees landlords rent at approximately 10% below market
+            rate, covers void periods of up to 2 months, and provides a damage deposit
+            guarantee. Over 400 landlords participate. Default rates (cases where the
+            guarantee is called upon) run 5–10% of the portfolio annually. The scheme
+            is managed by a small team (2–3 FTE) within the council's housing department
+            {{ref:oxford_guarantee}}.
+          lesson: |
+            The key design feature is that the guarantee must be genuinely unconditional
+            from the landlord's perspective — no caveats, no delays, no disputes. Any
+            ambiguity in guarantee terms destroys trust and kills enrolment. Athens's
+            fund must be structured with automatic payment triggers, not claims processes.
+      notes:
+        - >
+          The guarantee fund is legally a contingent liability of EATA, not of the
+          municipality directly. Whether this requires specific Municipal Council
+          authorisation beyond the standard EATA budget approval needs legal
+          clarification. The prudent approach is to seek explicit council approval
+          for the fund's capitalisation and operating rules.
+        - >
+          The fund's long-term viability depends on tenant selection and support.
+          SRA tenants must be supported with social worker case management to prevent
+          payment defaults from eroding the reserve. This is why the SRA budget
+          includes 2 social worker positions.
+
+    action:
+      body: |
+        EATA capitalises a ring-fenced Landlord Guarantee Reserve from municipal budget
+        allocation. The reserve covers three categories of guarantee: rent guarantee
+        (automatic payment to landlord if tenant defaults, within 5 business days of
+        missed payment), damage guarantee (coverage of property damage beyond normal
+        wear, up to €5,000 per unit per lease term), and void guarantee (continued rent
+        payment during tenant turnover, up to 2 months per vacancy event).
+
+        For a 500-unit portfolio at an average guaranteed rent of €500/month:
+        — Total annual rent exposure: €3 million.
+        — At a 7% call rate (between Oxford's 5–10% range): €210,000/year in guarantee
+        payouts.
+        — Damage claims at €1,000 average × 5% of portfolio/year: €25,000/year.
+        — Void costs at 1 month average × 10% turnover/year: €25,000/year.
+        — Total expected annual cost: ~€260,000, plus administration.
+
+        The reserve is capitalised at 1.5× expected annual cost (€400,000) at launch
+        and topped up annually. The reserve operates on a revolving basis — guarantee
+        payouts are recovered from tenants where possible (subtracted from deposit or
+        pursued through EATA's legal team), with recovered funds returning to the reserve.
+
+        The guarantee is offered only to landlords who lease through the SRA at agreed
+        below-market rates. This is the mechanism that links Measures 1 and 3: the
+        guarantee is the inducement; the SRA is the vehicle; the vacancy register
+        (Measure 2) identifies the targets.
+
+    budget:
+      items:
+        - id: reserve_capitalisation
+          label: "Initial reserve capitalisation (1.5× expected Year 1 annual payouts at 200-unit scale)"
+          type: one_time
+          low: 250000
+          high: 400000
+        - id: annual_topup
+          label: "Annual reserve top-up (expected payouts at 500-unit steady state + 20% contingency)"
+          type: annual
+          low: 250000
+          high: 400000
+        - id: guarantee_admin
+          label: "Fund administration — 1 FTE financial officer + insurance/actuarial advisory"
+          type: annual
+          low: 60000
+          high: 90000
+      notes:
+        - >
+          The guarantee fund is designed to be self-correcting: high call rates trigger
+          review of tenant selection criteria and social worker caseloads; low call rates
+          allow the reserve to accumulate, enabling portfolio expansion without
+          proportional budget increase.
+        - >
+          If the municipality later secures EIB/CEB financing for a larger housing
+          programme, the guarantee fund can be restructured as a first-loss tranche
+          within a blended finance instrument — significantly increasing leverage.
+
+    kpis:
+      - id: guarantee_call_rate
+        label: Guarantee call rate (payouts as % of total guaranteed rent)
+        type: financial
+        unit: percentage
+        baseline: n/a
+        target: "≤7% by month 18 · ≤5% by month 30"
+        frequency: quarterly
+        source: EATA Housing Division / guarantee fund accounts
+
+      - id: landlord_enrolment
+        label: Private landlords enrolled via guarantee (cumulative)
+        type: operational
+        unit: landlords
+        baseline: 0
+        target: "≥50 by month 18 · ≥200 by month 30"
+        frequency: quarterly
+        source: EATA Housing Division
+
+      - id: recovery_rate
+        label: Recovery rate on guarantee payouts (amounts recovered from tenants)
+        type: financial
+        unit: percentage of payouts
+        baseline: n/a
+        target: "≥30% recovery rate by month 24"
+        frequency: annual
+        source: EATA Housing Division / legal team
+
+      - id: reserve_adequacy
+        label: Reserve balance as multiple of trailing 12-month payouts
+        type: financial
+        unit: multiple
+        baseline: "1.5× (at capitalisation)"
+        target: "≥1.2× at all times; recapitalise if below 1.0×"
+        frequency: quarterly
+        source: EATA Finance
+
+
+  - id: housing_observatory
+    title: Housing Observatory & One-Stop Office
+    subtitle: Real-time data · Tenant advisory · Landlord onboarding · Permanent institution
+    tagline: The institutional foundation everything else depends on
+    icon: eye
+
+    context:
+      body: |
+        Athens currently has no systematic source of housing market data at the municipal
+        level. Rent figures are drawn from listing portals (Spitogatos, XE.gr) which
+        reflect asking prices, not contract rents. Vacancy data relies on the 2011
+        census. There is no municipal unit that tracks housing affordability, monitors
+        the impact of short-term rental regulation, or provides advisory services to
+        tenants or landlords.
+
+        Mayor Doukas announced a Housing Observatory and Social Housing Office in April
+        2025 {{ref:tovima_doukas_2025}}, and the municipality signed a strategic
+        partnership with Housing Europe (the European Federation of Public, Cooperative
+        and Social Housing) {{ref:housing_europe_partnership}}. As of March 2026, neither
+        has been formally established.
+
+        **Why the Observatory matters operationally.** The SRA cannot set sublet rates
+        without reliable market data. The guarantee fund cannot calibrate lease-in
+        discounts without neighbourhood-level rent benchmarks. The vacancy register
+        cannot distinguish "vacant and available" from "vacant and derelict" without
+        condition data. Every other measure in this programme depends on a data
+        infrastructure that does not currently exist.
+
+        **Why the One-Stop Office matters politically.** The programme's political
+        survival depends on visible, accessible service delivery. A physical office
+        (and digital portal) where tenants facing eviction can get advice, landlords
+        considering the SRA can get onboarded, and households seeking rent subsidies
+        can apply — all in one place — is the public face of the programme. The
+        Municipality of Egaleo's "Rock the Block" project established exactly this
+        model: a permanent municipal Housing Office as the anchor for all housing
+        interventions {{ref:rock_the_block}}.
+      legal:
+        - id: observatory_legal
+          citation: "Law 3852/2010 (Kallikratis), Article 75(I)(α)"
+          relevance: >
+            Municipal competency for social protection, solidarity services, and
+            data collection in support of social policy. Establishing an observatory
+            and advisory office is squarely within existing authority and requires
+            no new legislation — only a Municipal Council decision on structure and
+            staffing.
+      case_studies:
+        - name: Egaleo "Rock the Block" Housing Office
+          location: Municipality of Egaleo, Attica, Greece
+          period: "2024–ongoing"
+          type: positive
+          body: |
+            Egaleo launched a permanent municipal Housing Office under the European
+            Urban Initiative "Rock the Block" project in March 2024, using the
+            polykatoikia apartment block as the unit of intervention. The office
+            provides tenant advisory, coordinates building retrofits, and operates
+            a co-living hub — funded at up to €5 million (80% ERDF co-financing)
+            {{ref:rock_the_block}}.
+          lesson: |
+            A small neighbouring municipality with far fewer resources than Athens
+            has already established a permanent Housing Office with EU funding.
+            Athens has no institutional excuse for not doing the same.
+      notes:
+        - >
+          The Observatory should be designed to feed data directly into programme
+          KPIs. If the Observatory produces reports that are not operationally
+          connected to the SRA, guarantee fund, and enforcement unit, it becomes
+          an academic exercise rather than a management tool.
+
+    action:
+      body: |
+        **Housing Observatory.** EATA's Housing Division establishes a data unit that
+        collects, integrates, and publishes housing market data on a quarterly basis.
+        Data sources: listing portal scraping (Spitogatos, XE.gr — asking rents by
+        neighbourhood), TAP billing data (vacancy proxy), AADE anonymised ENFIA data
+        (property values, occupancy), SRA programme data (contract rents, tenant
+        profiles), and short-term rental registry data (AADE). The Observatory publishes
+        a quarterly Athens Housing Monitor report — publicly available — covering rent
+        trends, vacancy rates, affordability ratios, and SRA programme performance. The
+        Monitor serves a dual function: operational (it calibrates SRA pricing and
+        guarantee terms) and political (it makes the housing crisis legible and makes
+        defunding the programme politically costly).
+
+        **One-Stop Housing Office.** A physical office (centrally located, accessible by
+        metro) and digital portal providing: tenant advisory (eviction prevention, rights
+        information, referral to legal aid and social services), landlord onboarding
+        (SRA and guarantee fund enrolment, property assessment, lease negotiation),
+        housing application processing (rent subsidies, renovation grants, social housing
+        waiting list), and referral to national programmes (DYPA housing allowance,
+        national renovation programme). The office is staffed by 3 housing advisors
+        and 1 admin, with social worker support from the SRA team.
+
+        Both components are operational by month 6 — before the SRA begins enrolling
+        properties — so that the data infrastructure and public-facing service are in
+        place when the programme launches.
+
+    budget:
+      items:
+        - id: observatory_data
+          label: "Observatory — data infrastructure, portal scraping licences, GIS platform, quarterly report production"
+          type: annual
+          low: 100000
+          high: 180000
+        - id: office_lease
+          label: "One-Stop Office — lease, fit-out, equipment (central Athens location)"
+          type: one_time
+          low: 80000
+          high: 150000
+        - id: office_staff
+          label: "Office staff — 3 housing advisors + 1 admin (annual; incl. employer social contributions)"
+          type: annual
+          low: 160000
+          high: 240000
+        - id: digital_portal
+          label: "Digital portal — tenant/landlord self-service, appointment booking, document upload"
+          type: one_time
+          low: 60000
+          high: 120000
+      notes:
+        - >
+          The Observatory and Office are the programme components most likely to
+          attract EU innovation funding. The EUI 4th Call (February 2026, €60M ERDF,
+          up to 80% co-financing, grants up to €2M) explicitly covers housing data
+          and advisory infrastructure. An application should be submitted within 3
+          months of programme approval.
+
+    kpis:
+      - id: monitor_publications
+        label: Athens Housing Monitor reports published
+        type: operational
+        unit: reports
+        baseline: 0
+        target: "4/year (quarterly), first report by month 9"
+        frequency: quarterly
+        source: EATA Housing Division
+
+      - id: office_contacts
+        label: One-Stop Office contacts (tenant + landlord, in-person + digital)
+        type: operational
+        unit: contacts/month
+        baseline: 0
+        target: "≥200/month by month 12 · ≥500/month by month 24"
+        frequency: monthly
+        source: One-Stop Housing Office CRM
+
+      - id: referral_conversion
+        label: Landlord enquiries converted to SRA enrolment
+        type: outcome
+        unit: percentage of landlord enquiries
+        baseline: n/a
+        target: "≥20% conversion rate by month 18"
+        frequency: quarterly
+        source: One-Stop Housing Office / EATA Housing Division
+
+      - id: tenant_eviction_prevention
+        label: Tenants receiving eviction prevention advisory who avoid eviction within 6 months
+        type: outcome
+        unit: percentage
+        baseline: n/a
+        target: "≥50% of advised tenants avoid eviction by month 24"
+        frequency: quarterly
+        source: One-Stop Housing Office case records
+        note: >
+          Eviction prevention is cheaper and more humane than rehousing. If the
+          office can prevent even 50% of potential evictions through early
+          intervention, legal referral, and mediation, the downstream demand on
+          SRA units and emergency shelters falls proportionally.
+
+
+cross_cutting_costs:
+  note: >
+    These costs apply to the programme as a whole. They are not optional — omitting
+    them is how municipal programmes quietly fail.
+  items:
+    - id: programme_management
+      label: "Programme director + project officer (dedicated, full-time, 30-month programme)"
+      type: annual
+      low: 120000
+      high: 180000
+      note: >
+        Someone must coordinate four measures across EATA, Urban Planning,
+        Municipal Council, and national agencies. Without dedicated capacity this
+        role defaults to an existing official doing it part-time, which is how
+        timelines slip by years.
+    - id: legal
+      label: >
+        External legal counsel — EATA articles-of-association amendment, guarantee
+        fund structure, dangerous building enforcement legal opinion, Law 5229/2025
+        implementation guidance, contingency litigation
+      type: one_time
+      low: 60000
+      high: 150000
+      note: >
+        The dangerous building enforcement scope question requires a formal legal
+        opinion before operations expand beyond established definitions. The
+        guarantee fund structure needs specialist financial/administrative law
+        counsel. If challenged in court, litigation costs are additional.
+    - id: communications
+      label: "Public communications + landlord outreach campaign (30 months, digital + print + neighbourhood events)"
+      type: one_time
+      low: 80000
+      high: 150000
+      note: >
+        Landlord recruitment is the programme's binding constraint. A sustained
+        outreach campaign — not a one-off announcement — is essential. POMIDA
+        engagement, neighbourhood information sessions, and a dedicated programme
+        website are minimum requirements. This is the most likely item to be cut
+        and the most likely cause of programme failure if it is.
+
+
+summary:
+  setup:
+    label: Total one-time capital (all measures + cross-cutting)
+    low: 1450000
+    high: 2600000
+    breakdown:
+      sra_one_time:
+        label: SRA (renovation co-financing + platform + legal)
+        low: 720000
+        high: 1230000
+      vacancy_one_time:
+        label: Vacancy register (database development)
+        low: 200000
+        high: 400000
+      guarantee_one_time:
+        label: Guarantee fund (initial reserve capitalisation)
+        low: 250000
+        high: 400000
+      observatory_one_time:
+        label: Housing Observatory & Office (office fit-out + digital portal)
+        low: 140000
+        high: 270000
+      cross_cutting_one_time:
+        label: Cross-cutting (legal + communications)
+        low: 140000
+        high: 300000
+    note: >
+      Includes SRA renovation co-financing, property management platform,
+      vacancy register database, guarantee fund capitalisation, office fit-out,
+      digital portal, legal costs, and communications. No property acquisition.
+  annual:
+    label: Total annual operating cost (steady state, Year 2–3 at 500-unit scale)
+    low: 1860000
+    high: 3000000
+    breakdown:
+      sra_annual:
+        label: SRA (staff + rent differential subsidy)
+        low: 850000
+        high: 1380000
+      vacancy_annual:
+        label: Vacancy register & enforcement (unit + surveys + demolition fund)
+        low: 420000
+        high: 730000
+      guarantee_annual:
+        label: Guarantee fund (annual top-up + administration)
+        low: 310000
+        high: 490000
+      observatory_annual:
+        label: Housing Observatory & Office (data + staff)
+        low: 260000
+        high: 420000
+      cross_cutting_annual:
+        label: Programme management
+        low: 120000
+        high: 180000
+    note: >
+      Year 1 annual costs are lower (100-unit SRA scale, guarantee fund ramping up).
+      The steady-state figures above assume 500 units under SRA management. At Year 1
+      (100 units), total annual operating cost is approximately €1.1–1.8M.
+      With ESF+ co-financing at 85%, effective municipal annual outlay at steady state
+      drops to approximately €900,000–1,500,000.
+  eu_grants:
+    label: Potential EU co-financing (ESF+ · ERDF · EUI · national renovation programme — retrospective reimbursement)
+    low: 0
+    high: 4000000
+    note: >
+      Modelled as retrospective reimbursement, not upfront financing. ESF+ covers SRA
+      operational costs at up to 85%. ERDF/EUI covers observatory and innovation
+      components at up to 80%. The national €400M renovation programme covers up to
+      90% / €36,000 per dwelling. Given Greece's documented absorption delays, the
+      programme must be fully funded from municipal budget. Any grant received reduces
+      net outlay retrospectively.
+  total_programme_cost:
+    label: "Total 30-month programme cost (one-time + 2.5× annual)"
+    low: 6100000
+    high: 10100000
+    note: >
+      Full 30-month cost at €1.5–2.6M one-time + 2.5 years × €1.9–3.0M annual.
+      Within the €10–15M/year envelope when annualised. Before EU co-financing.
+
+
+timeline:
+  - month: 1
+    milestone: Municipal Council approves EATA articles-of-association amendment adding housing mandate; programme director appointed
+  - month: 3
+    milestone: Housing Observatory data unit operational; portal scraping and TAP data integration begins; One-Stop Office location secured
+  - month: 4
+    milestone: External legal opinion on dangerous building enforcement scope obtained; guarantee fund structure finalised by counsel
+  - month: 6
+    milestone: One-Stop Housing Office opens; vacancy register database development complete; first landlord outreach campaign launches; first Athens Housing Monitor report published
+  - month: 8
+    milestone: SRA Tranche 1 leasing begins — 100 units from public-property owners and municipal buildings; guarantee fund capitalised and operational
+  - month: 9
+    milestone: Vacancy register identifies first 5,000 properties; targeted SRA invitations sent to owners of verified vacant properties
+  - month: 12
+    milestone: >
+      SRA reaches 100 units under management; building enforcement unit begins
+      systematic surveys of flagged derelict buildings; EU grant applications
+      submitted (ESF+ for SRA operations, EUI for Observatory/Office)
+  - month: 15
+    milestone: >
+      SRA Tranche 2 begins — extension to private landlords via guarantee fund;
+      first enforcement notices issued for genuinely dangerous buildings; guarantee
+      call rate reviewed and tenant selection criteria adjusted if above 7%
+  - month: 18
+    milestone: >
+      Programme review point: SRA at 200+ units; guarantee fund performance
+      assessed; vacancy register at 10,000+ identified properties; enforcement
+      compliance rate reviewed. If SRA landlord recruitment below target, guarantee
+      terms and lease-in rates are revised.
+  - month: 24
+    milestone: >
+      SRA reaches 300 units; Tranche 3 begins — targeting neighbourhoods with
+      concentrated vacancy identified by register; building enforcement expanded
+      to severely degraded buildings (if legal opinion supports); Housing Monitor
+      has published 6 quarterly reports
+  - month: 27
+    milestone: EIB/CEB loan application prepared for programme scale-up beyond 500 units (conditional on SRA performance and institutional capacity)
+  - month: 30
+    milestone: >
+      500-unit target assessed; full programme evaluation published; Municipal
+      Council decision on continuation and scale-up; if targets met, EATA
+      housing mandate made permanent and EIB/CEB financing pursued for 1,000+
+      unit scale
+
+
+kpis:
+  reporting_cadence: Quarterly public report (via Athens Housing Monitor); annual independent review
+  note: >
+    KPIs are published publicly on a quarterly basis as part of the Athens Housing
+    Monitor. Public reporting is the primary institutionalisation mechanism — it makes
+    defunding politically costly by forcing an explanation for why the numbers stopped
+    moving. Per-measure KPIs are defined within each measure above; the indicators
+    below apply across the programme as a whole.
+  programme_wide:
+    - id: housing_cost_burden_target
+      label: Average housing cost burden of programme beneficiaries (all measures)
+      type: outcome
+      unit: percentage of disposable income
+      baseline: ">40% (eligibility threshold)"
+      target: "≤30% for SRA tenants; measurable reduction in citywide overburden rate by month 30"
+      frequency: quarterly
+      source: EATA Housing Division / Housing Observatory
+      note: >
+        The programme's fundamental purpose is to reduce housing cost burden.
+        If beneficiary burden does not fall below 30%, the programme is mispriced.
+        Citywide impact is a slower signal — the 500-unit programme is too small to
+        move the 28.9% overburden rate materially, but trend direction matters.
+
+    - id: vacant_units_activated
+      label: Vacant units brought into active rental use (SRA + enforcement-induced)
+      type: outcome
+      unit: units
+      baseline: 0
+      target: "500 via SRA + ≥200 via enforcement compliance by month 30"
+      frequency: quarterly
+      source: EATA Housing Division / vacancy register
+
+    - id: programme_spend_vs_budget
+      label: Programme spend vs. approved budget (cumulative)
+      type: financial
+      unit: EUR
+      baseline: 0
+      target: "Within 15% of approved budget at each quarterly review"
+      frequency: quarterly
+      source: Programme management office / EATA finance
+
+
+references:
+  - id: eurostat_2023
+    title: "Living Conditions in Europe — Housing"
+    author: Eurostat
+    year: 2023
+    detail: "Greece: 28.9% housing cost overburden rate (EU average 8.2%); lowest quintile 88.6%"
+
+  - id: housing_europe_2025
+    title: "The State of Housing in the EU 2025 — Greece Country Report"
+    author: Housing Europe
+    year: 2025
+    detail: "Greece: 0% social rental housing stock; home price-to-income ratio 12.7 (2024)"
+
+  - id: eliamep_2025
+    title: "The Housing Problem in the European Union and Greece"
+    author: "Thomas Maloutas & Dimitra Siatitsa, ELIAMEP"
+    year: 2025
+    detail: "OEK abolished Feb 2012; central Athens rents €10.9–11.5/sqm; 60 sqm = ~60% of median net wage"
+
+  - id: eteron_vacancy
+    title: "Vacant Houses"
+    author: "Eteron Foundation — Stegasi 360°"
+    year: 2024
+    url: housing360.eteron.org
+    detail: "Municipality of Athens: 31% vacancy (2011 census); ~132,000 flats; national total 2.28M (35%)"
+
+  - id: tovima_doukas_2025
+    title: "Mayor of Athens Announces Strategy to Address Housing Crisis"
+    author: To Vima
+    year: 2025
+    detail: "Doukas: 1 in 3 central residents spends 40% on rent; 7 social apartments; 257 rent subsidies; Housing Observatory and Social Housing Office announced"
+
+  - id: gtp_renovation_2024
+    title: "Municipality of Athens: Pilot Program for Renovation of 70 Homes for Vulnerable Families"
+    author: Greek Travel Pages
+    year: 2024
+    detail: "70 renovation grants at up to €10,055/unit under Social Housing for Vulnerable Groups pilot"
+
+  - id: law_5229_2025
+    title: "Law 5229/2025 — Social Consideration (FEK A-158/2025)"
+    author: Hellenic Parliament
+    year: 2025
+    detail: >
+      Introduces social rental into Greek law. Municipalities may act as social housing
+      providers, set social rental prices, enter Social Antiparochi agreements (min 30%
+      social housing), and operate SRA services through municipal development companies.
+
+  - id: thessaloniki_sra
+    title: "Housing Thessaloniki: From Identifying Vacant Housing Stock to Creating a Model of Social Housing for Greece"
+    author: European Social Fund Plus / MDAT SA
+    year: 2024
+    detail: "Greece's first SRA; 30 apartments; RRF-funded; operational templates for property transfer, tenancy, rent-setting. €1M ESF+ for 2026 rollout."
+
+  - id: brussels_sra
+    title: "Social Rental Agencies between Social Mission and Assetisation"
+    author: "Taylor & Francis (academic)"
+    year: 2025
+    detail: "Brussels: 24 SRAs managing ~8,000 units; lease-and-sublet model; institutional investor participation"
+
+  - id: lisbon_renda_segura
+    title: "Programa Renda Segura — Lisbon"
+    author: Atlas Lisboa / Lisbob / SUPERCASA
+    year: "2020–2021"
+    detail: "€15M budget; 3-year rent advance; 177 houses rented at avg €723/month; adherence lower than expected (183 properties by 2021)"
+
+  - id: amsterdam_vacancy
+    title: "Amsterdam Tightens Vacancy Bylaw"
+    author: Wieringa Advocaten
+    year: 2022
+    detail: "Fines €4,500–€9,000 for vacancy >6 months; tenant nomination for vacancy >12 months; utility data identification"
+
+  - id: oxford_guarantee
+    title: "Rent Guarantee Service for Landlords"
+    author: Oxford City Council
+    url: oxford.gov.uk
+    detail: "400+ enrolled landlords; rent at ~10% below market; covers void periods; default rates 5–10%"
+
+  - id: pomida_2025
+    title: "POMIDA — Panhellenic Federation of Property Owners"
+    author: POMIDA
+    year: 2025
+    url: pomida.gr
+    detail: "Key barriers identified: non-payment risk, property damage, eviction difficulty. Finance Minister consults POMIDA council on housing measures."
+
+  - id: global_property_guide
+    title: "Greece's Residential Property Market Analysis 2026"
+    author: Global Property Guide
+    year: 2026
+    detail: "Central Athens 60–70 sqm apartment: €150,000–200,000; asking rents €10.9–11.5/sqm"
+
+  - id: enfia_vacancy
+    title: "Double ENFIA Tax for Bank and Fund-Owned Vacant Properties"
+    author: Athens Times
+    year: 2025
+    detail: "ENFIA vacancy surcharge applies only to bank/servicer-owned properties (Law 5073/2023). Does not apply to individual owners."
+
+  - id: athens_times_vacancy
+    title: "Greece's Housing Crisis: Vacant Homes and Renovation Challenges"
+    author: Athens Times
+    year: 2025
+    detail: "Average building age 48–51 years in central Athens; 228,000 housing units built pre-1980 needing renovation nationally"
+
+  - id: tovima_illegal_construction
+    title: "Greece Sets Out to Demolish Illegal Structures, Again"
+    author: To Vima
+    year: 2025
+    detail: "€2M Green Fund allocation for demolitions; €130M satellite/drone monitoring system expected operational summer 2026"
+
+  - id: rock_the_block
+    title: "Rock the Block — Integrated Participatory Roadmaps for Affordable Co-Living"
+    author: European Urban Initiative / Municipality of Egaleo
+    year: 2024
+    detail: "EUI Innovative Actions; up to €5M (80% ERDF); polykatoikia as unit of intervention; permanent municipal Housing Office"
+
+  - id: housing_europe_partnership
+    title: "Housing Europe Inaugurates Strategic Partnership with the City of Athens"
+    author: Housing Europe
+    year: 2025
+    detail: "Strategic partnership for knowledge transfer on social and affordable housing policy"
+
+  - id: protothema_housing_2025
+    title: "Operation Housing: €7 Billion in Measures Through 2027"
+    author: ProtoThema English
+    year: 2025
+    detail: "National €450M housing package; €400M renovation programme (up to 90% / €36,000 per dwelling); Law 5229/2025 framework"
+
+  - id: doukas_election
+    title: "Haris Doukas — 2023 Athens Municipal Election"
+    author: Wikipedia / IFIMES
+    year: 2023
+    detail: "Elected October 2023 (PASOK-KINAL); 26/49 Municipal Council supermajority; took office January 2024"
